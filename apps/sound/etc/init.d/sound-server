@@ -1,0 +1,24 @@
+#!/bin/sh
+# kFreeBSD do not accept scripts as interpreters, using #!/bin/sh and sourcing.
+if [ true != "$INIT_D_SCRIPT_SOURCED" ] ; then
+    set "$0" "$@"; INIT_D_SCRIPT_SOURCED=true . /lib/init/init-d-script
+fi
+### BEGIN INIT INFO
+# Provides:          sound-server
+# Required-Start:    $remote_fs $syslog station-setup
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Harmoniscope sound control web server 
+# Description:       The Harmoniscope sound control web server takes in 
+#                    commands to generate sounds, either audio files or MIDI
+#                    notes.
+### END INIT INFO
+
+# Author: Mark Novak <>
+
+DESC="Harmoniscope sound control web server"
+DAEMON=/usr/local/bin/sound_server.py
+
+PIDFILE=/var/run/harmoniscope/sound-server.pid
+

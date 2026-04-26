@@ -1,0 +1,1221 @@
+{
+    "events": [
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      0,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      10,
+            "green":    10,
+            "blue":     20
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      20,
+            "green":    20,
+            "blue":     20
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      30,
+            "green":    30,
+            "blue":     30
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      40,
+            "green":    40,
+            "blue":     40
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      50,
+            "green":    50,
+            "blue":     50
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      60,
+            "green":    60,
+            "blue":     60
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      70,
+            "green":    70,
+            "blue":     70
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      80,
+            "green":    80,
+            "blue":     80
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      90,
+            "green":    90,
+            "blue":     90
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      100,
+            "green":    100,
+            "blue":     100
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      110,
+            "green":    110,
+            "blue":     110
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      120,
+            "green":    120,
+            "blue":     120
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      130,
+            "green":    130,
+            "blue":     130
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      140,
+            "green":    140,
+            "blue":     140
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      150,
+            "green":    150,
+            "blue":     150
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      160,
+            "green":    160,
+            "blue":     160
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      170,
+            "green":    170,
+            "blue":     170
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      180,
+            "green":    180,
+            "blue":     180
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      190,
+            "green":    190,
+            "blue":     190
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      200,
+            "green":    200,
+            "blue":     200
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      210,
+            "green":    210,
+            "blue":     210
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      220,
+            "green":    220,
+            "blue":     220
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      230,
+            "green":    230,
+            "blue":     230
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      240,
+            "green":    240,
+            "blue":     240
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      250,
+            "green":    250,
+            "blue":     250
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    0,
+            "red":      255,
+            "green":    255,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    1,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    5,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    9,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    13,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    17,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    21,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    25,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    2,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    6,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    10,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    14,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    18,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    22,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    26,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    3,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    7,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    11,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    15,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    19,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    23,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    27,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    4,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    8,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    12,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    16,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    20,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    24,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    28,
+            "red":      255,
+            "green":    0,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    1,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    5,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    9,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    13,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    17,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    21,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    25,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    2,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    6,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    10,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    14,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    18,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    22,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    26,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    3,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    7,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    11,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    15,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    19,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    23,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    27,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    4,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    8,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    12,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    16,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    20,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    24,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    28,
+            "red":      0,
+            "green":    255,
+            "blue":     0
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    1,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    5,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    9,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    13,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    17,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    21,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    25,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    2,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    6,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    10,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    14,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    18,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    22,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    26,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    3,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    7,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    11,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    15,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    19,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    23,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    27,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    4,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    8,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    12,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    16,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    20,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    24,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        },
+        {
+            "type":     "delay",
+            "amount":   25
+        },
+        {
+            "type":     "pixel-set",
+            "pixel":    28,
+            "red":      0,
+            "green":    0,
+            "blue":     255
+        }
+    ]
+}

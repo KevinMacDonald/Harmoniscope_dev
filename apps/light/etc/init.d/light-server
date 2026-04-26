@@ -1,0 +1,24 @@
+#!/bin/sh
+# kFreeBSD do not accept scripts as interpreters, using #!/bin/sh and sourcing.
+if [ true != "$INIT_D_SCRIPT_SOURCED" ] ; then
+    set "$0" "$@"; INIT_D_SCRIPT_SOURCED=true . /lib/init/init-d-script
+fi
+### BEGIN INIT INFO
+# Provides:          light-server
+# Required-Start:    $remote_fs $syslog station-setup
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Harmoniscope light control web server 
+# Description:       The Harmoniscope light control web server takes in 
+#                    light change commands and sends updated light state via
+#                    DMX.
+### END INIT INFO
+
+# Author: Jon McClintock <jammer@weak.org>
+
+DESC="Harmoniscope light control web server"
+DAEMON=/usr/local/bin/light_server.py
+
+PIDFILE=/var/run/harmoniscope/light-server.pid
+

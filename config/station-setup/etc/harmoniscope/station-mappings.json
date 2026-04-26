@@ -1,0 +1,59 @@
+// Station mapping configuration file. Defines which daemons should be 
+// run for a given station ID.
+{
+   // A hash mapping station IDs to IP addresses.
+   "stations": {
+        "0": {
+            "ip_address": "172.16.0.100"
+        },
+        "1": {
+            "ip_address": "172.16.0.101"
+        },
+        "2": {
+            "ip_address": "172.16.0.102"
+        },
+        "3": {
+            "ip_address": "172.16.0.103"
+        },
+        "4": {
+            "ip_address": "172.16.0.104"
+        },
+        "5": {
+            "ip_address": "172.16.0.105"
+        },
+        "6": {
+            "ip_address": "172.16.0.106"
+        },
+        "7": {
+            "ip_address": "172.16.0.107"
+        },
+        "8": {
+            "ip_address": "172.16.0.108"
+        }
+    },
+
+    // An array of hashes, one for each possible process that we have.
+    "daemons": [
+        {
+            "name":        "master-controller",
+            "description": "The master controller process that takes in station state information and generates events",
+            "runs_on_stations": [ "0" ]
+        },
+        {
+            "name":        "light-server",
+            "description": "The light control process that recieves light events from the master controller",
+            "runs_on_stations": [ "0" ]
+        },
+        {
+            "name":        "control-scan",
+            "description": "The process that reads in knob input settings and sends them to the master controller",
+            "runs_on_stations": [ "1", "2", "3", "4", "5", "6", "7" ]
+        },
+        {
+            "name":        "sound-server",
+            "description": "The audio control service that recieves sound events for a station from the master controller",
+            "runs_on_stations": [ "1", "2", "3", "4", "5", "6", "7", "8" ]
+        }
+    ]
+}
+

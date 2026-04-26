@@ -1,0 +1,18 @@
+127.0.0.1	localhost
+::1		localhost ip6-localhost ip6-loopback
+ff02::1		ip6-allnodes
+ff02::2		ip6-allrouters
+
+127.0.1.1	raspberrypi
+
+172.16.0.100    master
+172.16.0.100    light
+172.16.0.101    station1
+172.16.0.102    station2
+172.16.0.103    station3
+172.16.0.104    station4
+172.16.0.105    station5
+172.16.0.106    station6
+172.16.0.107    station7
+172.16.0.108    bass
+

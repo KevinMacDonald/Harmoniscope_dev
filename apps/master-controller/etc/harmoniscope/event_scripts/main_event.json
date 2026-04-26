@@ -1,0 +1,46 @@
+{
+    "events": [
+        {
+            "type":         "change_state",
+            "when":         0,
+            "new_state":    2   /* Main event */
+        },
+        {
+            "type":         "pixel_fade",
+            "when":         0,
+            "duration":     3,
+            "steps":        20,
+            "pixel_ids":    [ 0 ],
+            "start_color":  "#FFFFFF",
+            "end_color":    "#000000"
+        },
+        {
+            "type":         "pixel_chase",
+            "when":         3,
+            "duration":     2,
+            "pixel_ids":    [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28 ],
+            "color":        "#FF0000"
+        },
+        {
+            "type":         "pixel_chase",
+            "when":         5,
+            "duration":     2,
+            "pixel_ids":    [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28 ],
+            "color":        "#00FF00"
+        },
+        {
+            "type":         "pixel_chase",
+            "when":         7,
+            "duration":     2,
+            "pixel_ids":    [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28 ],
+            "color":        "#0000FF"
+        },
+        {
+            "type":         "change_state",
+            "when":         10,
+            "new_state":    1   /* Running */
+        }
+    ]
+}
+
+

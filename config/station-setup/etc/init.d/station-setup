@@ -1,0 +1,20 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          station-setup
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# X-Start-Before:    $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Setup for the Harmoniscope station.
+# Description:       Runs the setup tool for the Harmoniscope station, which
+#                    configures the network interface based on the station
+#                    configuration jumpers, and enables/disables the appropriate
+#                    daemons for that station.
+### END INIT INFO
+
+# Author: Jon McClintock <jammer@weak.org>
+
+DESC="Harmoniscope station configuration"
+
+/usr/local/bin/station_setup.py

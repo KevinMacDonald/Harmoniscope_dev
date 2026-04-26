@@ -1,0 +1,11 @@
+Library for reading in values from the ADS1256 analog to digital converter (ADC)
+on the Waveshare DA/AD board:
+
+  http://www.waveshare.com/product/mini-pc/raspberry-pi/expansions/high-precision-ad-da-board.htm
+
+The chip is connected over SPI, and this library depends on the bcm2835 library:
+
+  http://www.airspayce.com/mikem/bcm2835/
+
+
+

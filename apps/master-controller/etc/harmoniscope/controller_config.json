@@ -1,0 +1,579 @@
+// Controller configuration file. Maps the control knobs to colors and sounds.
+{
+    // A hash of the station IDs to their configurations.
+    "stations": {
+        "1": { // Comet
+
+            // The configuration for each knob.
+            "knobs": {
+                "1": {
+                    // The position this knob needs to be in to trigger the
+                    // main event. Values are 0-7.
+                    "target_position": 7,
+
+                    // The hint sound to play when the target position is
+                    // set.
+                    "sound_hint": "sh5", // sh5
+
+                    // The MIDI note numbers to generate for each position.
+                    "notes": [ 63, 64, 65, 66, 67, 68, 69, 70 ],
+
+                    // The pixel number of the rod this knob controls.
+                    "pixel": 1,
+
+                    // The colors to set the rod for each position
+                    "colors": [
+                        "#005a04",
+                        "#015508",
+                        "#034911",
+                        "#073c1c",
+                        "#093225",
+                        "#0b262f",
+                        "#0c2232",
+                        "#0d1d36"
+                    ]
+                },
+                "2": {
+                    "target_position": 6,
+                    "sound_hint": "sh10", // sh10
+                    "notes": [ 60, 61, 62, 63, 64, 65, 66, 67 ],
+                    "pixel": 2,
+                    "colors": [
+                        "#311f99",
+                        "#441b9f",
+                        "#5417a4",
+                        "#5417a4",
+                        "#830cb2",
+                        "#9f06bb",
+                        "#aa02bf",
+                        "#b500c2"
+                    ]
+                },
+                "3": {
+                    "target_position": 4,
+                    "sound_hint": "sh14", // sh14
+                    "notes": [ 74, 75, 76, 77, 78, 79, 80, 81 ],
+                    "pixel": 3,
+                    "colors": [
+                        "#992100",
+                        "#a13005",
+                        "#b0500f",
+                        "#be6a18",
+                        "#cf8c23",
+                        "#e1ae2e",
+                        "#eac235",
+                        "#ffeb42"
+                    ]
+                },
+                "4": {
+                    "target_position": 4,
+                    "sound_hint": "sh4", // sh4
+                    "notes": [ 50, 51, 52, 53, 54, 55, 56, 57 ],
+                    "pixel": 4,
+                    "colors": [
+                        "#000b5c",
+                        "#071d5e",
+                        "#113c61",
+                        "#1d5c64",
+                        "#267367",
+                        "#2e8b68",
+                        "#359d6b",
+                        "#3db56d"
+                    ]
+                }
+            }
+        },
+
+        "2": { // Star
+
+            // The configuration for each knob.
+            "knobs": {
+                "1": {
+                    // The position this knob needs to be in to trigger the
+                    // main event. Values are 0-7.
+                    "target_position": 4,
+
+                    // The hint sound to play when the target position is
+                    // set.
+                    "sound_hint": "sh20", // sh20
+
+                    // The MIDI note numbers to generate for each position.
+                    "notes": [ 60, 61, 62, 63, 64, 65, 66, 67 ],
+
+                    // The pixel number of the rod this knob controls.
+                    "pixel": 5,
+
+                    // The colors to set the rod for each position
+                    "colors": [
+                        "#a30003",
+                        "#aa0b03",
+                        "#b41803",
+                        "#c02a02",
+                        "#cd3d02",
+                        "#da4f01",
+                        "#e76201",
+                        "#f27100"
+                    ]
+                },
+                "2": {
+                    "target_position": 1,
+                    "sound_hint": "sh30", // sh30
+                    "notes": [ 67, 68, 69, 70, 71, 72, 73, 74 ],
+                    "pixel": 6,
+                    "colors": [
+                        "#f66200",
+                        "#f76a08",
+                        "#f87513",
+                        "#fb8f2e",
+                        "#fc9d3c",
+                        "#fdab49",
+                        "#ffb554",
+                        "#ffbd5c"
+                    ]
+                },
+                "3": {
+                    "target_position": 5,
+                    "sound_hint": "sh21", // sh21
+                    "notes": [ 66, 67, 68, 69, 70, 71, 72, 73 ],
+                    "pixel": 7,
+                    "colors": [
+                        "#00108e",
+                        "#082098",
+                        "#1335a4",
+                        "#2b65c0",
+                        "#3b88d6",
+                        "#48a3e6",
+                        "#54bbf4",
+                        "#5eceff"
+                    ]
+                },
+                "4": {
+                    "target_position": 3,
+                    "sound_hint": "sh15", // sh15
+                    "notes": [ 69, 70, 71, 72, 73, 74, 75, 76 ],
+                    "pixel": 8,
+                    "colors": [
+                        "#040059",
+                        "#151466",
+                        "#3c4083",
+                        "#6a76a5",
+                        "#899bbd",
+                        "#a7bbd3",
+                        "#bfd8e5",
+                        "#d0ebf2"
+                    ]
+                }
+            }
+        },
+
+        "3": { // Constellation
+
+            // The configuration for each knob.
+            "knobs": {
+                "1": {
+                    // The position this knob needs to be in to trigger the
+                    // main event. Values are 0-7.
+                    "target_position": 3,
+
+                    // The hint sound to play when the target position is
+                    // set.
+                    "sound_hint": "sh3", // sh3
+
+                    // The MIDI note numbers to generate for each position.
+                    "notes": [ 71, 72, 73, 74, 75, 76, 77, 78 ],
+
+                    // The pixel number of the rod this knob controls.
+                    "pixel": 9,
+
+                    // The colors to set the rod for each position
+                    "colors": [
+                        "#dc66bc",
+                        "#c96ac0",
+                        "#af70c5",
+                        "#9c74c8",
+                        "#8e78cb",
+                        "#757ed0",
+                        "#6381d3",
+                        "#4a87d8"
+                    ]
+                },
+                "2": {
+                    "target_position": 1,
+                    "sound_hint": "sh32", // sh32
+                    "notes": [ 63, 64, 65, 66, 67, 68, 69, 70 ],
+                    "pixel": 10,
+                    "colors": [
+                        "#7e3725",
+                        "#884321",
+                        "#98581c",
+                        "#aa6e14",
+                        "#bc830e",
+                        "#c99408",
+                        "#d4a204",
+                        "#e0b000"
+                    ]
+                },
+                "3": {
+                    "target_position": 0,
+                    "sound_hint": "sh12", // sh12
+                    "notes": [ 63, 64, 65, 66, 67, 68, 69, 70 ],
+                    "pixel": 11,
+                    "colors": [
+                        "#887a93",
+                        "#7f738e",
+                        "#6c6383",
+                        "#5b5479",
+                        "#4f4b72",
+                        "#3f3d69",
+                        "#343463",
+                        "#24275a"
+                    ]
+                },
+                "4": {
+                    "target_position": 2,
+                    "sound_hint": "sh16", // sh16
+                    "notes": [ 60, 61, 62, 63, 64, 65, 66, 67 ],
+                    "pixel": 12,
+                    "colors": [
+                        "#8f0100",
+                        "#84030a",
+                        "#70071c",
+                        "#5d0b2e",
+                        "#500e39",
+                        "#38134f",
+                        "#2a165c",
+                        "#201865"
+                    ]
+                }
+            }
+        },
+
+        "4": { // Black Hole
+
+            // The configuration for each knob.
+            "knobs": {
+                "1": {
+                    // The position this knob needs to be in to trigger the
+                    // main event. Values are 0-7.
+                    "target_position": 3,
+
+                    // The hint sound to play when the target position is
+                    // set.
+                    "sound_hint": "sh19", // sh19
+
+                    // The MIDI note numbers to generate for each position.
+                    "notes": [ 68, 69, 70, 71, 72, 73, 74, 75 ],
+
+                    // The pixel number of the rod this knob controls.
+                    "pixel": 13,
+
+                    // The colors to set the rod for each position
+                    "colors": [
+                        "#06036c",
+                        "#16026e",
+                        "#2f0272",
+                        "#410173",
+                        "#560176",
+                        "#670078",
+                        "#700079",
+                        "#7a007b"
+                    ]
+                },
+                "2": {
+                    "target_position": 3,
+                    "sound_hint": "sh26", // sh26
+                    "notes": [ 64, 65, 66, 67, 68, 69, 70, 71 ],
+                    "pixel": 14,
+                    "colors": [
+                        "#100061",
+                        "#221062",
+                        "#3b2664",
+                        "#745a67",
+                        "#b2926c",
+                        "#c7a56d",
+                        "#e5c06f",
+                        "#ffd771"
+                    ]
+                },
+                "3": {
+                    "target_position": 1,
+                    "sound_hint": "sh27", // sh27
+                    "notes": [ 62, 63, 64, 65, 66, 67, 68, 69 ],
+                    "pixel": 15,
+                    "colors": [
+                        "#261a62",
+                        "#220057",
+                        "#450045",
+                        "#660034",
+                        "#870023",
+                        "#ad000f",
+                        "#b7000a",
+                        "#ca0000"
+                    ]
+                },
+                "4": {
+                    "target_position": 0,
+                    "sound_hint": "sh17", //sh 17
+                    "notes": [ 60, 61, 62, 63, 64, 65, 66, 67 ],
+                    "pixel": 16,
+                    "colors": [
+                        "#327eba",
+                        "#2b6aa9",
+                        "#235498",
+                        "#1d448b",
+                        "#17367f",
+                        "#122974",
+                        "#0e1d6b",
+                        "#0e1d6b"
+                    ]
+                }
+            }
+        },
+
+        "5": { // Quasar
+
+            // The configuration for each knob.
+            "knobs": {
+                "1": {
+                    // The position this knob needs to be in to trigger the
+                    // main event. Values are 0-7.
+                    "target_position": 3,
+
+                    // The hint sound to play when the target position is
+                    // set.
+                    "sound_hint": "sh7", // sh7
+
+                    // The MIDI note numbers to generate for each position.
+                    "notes": [ 63, 64, 65, 66, 67, 68, 69, 70 ],
+
+                    // The pixel number of the rod this knob controls.
+                    "pixel": 17,
+
+                    // The colors to set the rod for each position
+                    "colors": [
+                        "#fbf6fc",
+                        "#eadfec",
+                        "#bfa4c3",
+                        "#a581aa",
+                        "#814f88",
+                        "#6b3173",
+                        "#591963",
+                        "#470052"
+                    ]
+                },
+                "2": {
+                    "target_position": 1,
+                    "sound_hint": "sh22", // sh22
+                    "notes": [ 73, 74, 75, 76, 77, 78, 79, 80 ],
+                    "pixel": 18,
+                    "colors": [
+                        "#d15e00",
+                        "#d46b14",
+                        "#d97b2e",
+                        "#e0965a",
+                        "#e7ad7e",
+                        "#ecc3a0",
+                        "#f5e2d3",
+                        "#fcfcfc"
+                    ]
+                },
+                "3": {
+                    "target_position": 4,
+                    "sound_hint": "sh8", // sh8
+                    "notes": [ 67, 68, 69, 70, 71, 72, 73, 74 ],
+                    "pixel": 19,
+                    "colors": [
+                        "#eaebe6",
+                        "#dce4e9",
+                        "#c2d5ed",
+                        "#a6c6f2",
+                        "#93bcf5",
+                        "#74abfa",
+                        "#66a4fc",
+                        "#589cff"
+                    ]
+                },
+                "4": {
+                    "target_position": 2,
+                    "sound_hint": "sh23", // sh23
+                    "notes": [ 60, 61, 62, 63, 64, 65, 66, 67 ],
+                    "pixel": 20,
+                    "colors": [
+                        "#890400",
+                        "#931a17",
+                        "#a13532",
+                        "#b66260",
+                        "#b66260",
+                        "#e2c1c0",
+                        "#ecd7d7",
+                        "#ffffff"
+                    ]
+                }
+            }
+        },
+
+        "6": { // Pulsar
+
+            // The configuration for each knob.
+            "knobs": {
+                "1": {
+                    // The position this knob needs to be in to trigger the
+                    // main event. Values are 0-7.
+                    "target_position": 1,
+
+                    // The hint sound to play when the target position is
+                    // set.
+                    "sound_hint": "sh1", // sh1
+
+                    // The MIDI note numbers to generate for each position.
+                    "notes": [ 60, 61, 62, 63, 64, 65, 66, 67 ],
+
+                    // The pixel number of the rod this knob controls.
+                    "pixel": 21,
+
+                    // The colors to set the rod for each position
+                    "colors": [
+                        "#ee0920",
+                        "#db082f",
+                        "#c00745",
+                        "#a80658",
+                        "#810577",
+                        "#560399",
+                        "#3f02ab",
+                        "#0f00d2"
+                    ]
+                },
+                "2": {
+                    "target_position": 3,
+                    "sound_hint": "sh28", // sh28
+                    "notes": [ 61, 62, 63, 64, 65, 66, 67, 68 ],
+                    "pixel": 22,
+                    "colors": [
+                        "#a8b6e5",
+                        "#9da3d4",
+                        "#8c85b9",
+                        "#806ea5",
+                        "#745b93",
+                        "#6e4e89",
+                        "#633a76",
+                        "#572564"
+                    ]
+                },
+                "3": {
+                    "target_position": 4,
+                    "sound_hint": "sh31", // sh31
+                    "notes": [ 66, 67, 68, 69, 70, 71, 72, 73 ],
+                    "pixel": 23,
+                    "colors": [
+                        "#00ff1e",
+                        "#1ae435",
+                        "#39c54f",
+                        "#5aa16d",
+                        "#8d6d99",
+                        "#b347b9",
+                        "#cb2ecf",
+                        "#f700f5"
+                    ]
+                },
+                "4": {
+                    "target_position": 7,
+                    "sound_hint": "sh24", //sh24
+                    "notes": [ 50, 51, 52, 53, 54, 55, 56, 57 ],
+                    "pixel": 24,
+                    "colors": [
+                        "#4550c6",
+                        "#5658b7",
+                        "#6962a5",
+                        "#6f649f",
+                        "#997a79",
+                        "#b5875f",
+                        "#c38e53",
+                        "#e8a031"
+                    ]
+                }
+            }
+        },
+
+        "7": { // Galaxy
+
+            // The configuration for each knob.
+            "knobs": {
+                "1": {
+                    // The position this knob needs to be in to trigger the
+                    // main event. Values are 0-7.
+                    "target_position": 7,
+
+                    // The hint sound to play when the target position is
+                    // set.
+                    "sound_hint": "sh25", // sh25
+
+                    // The MIDI note numbers to generate for each position.
+                    "notes": [ 60, 61, 62, 63, 64, 65, 66, 67 ],
+
+                    // The pixel number of the rod this knob controls.
+                    "pixel": 25,
+
+                    // The colors to set the rod for each position
+                    "colors": [
+                        "#ba67dd",
+                        "#ae64d4",
+                        "#965dc1",
+                        "#895ab7",
+                        "#7956aa",
+                        "#6e54a3",
+                        "#635199",
+                        "#514c8c"
+                    ]
+                },
+                "2": {
+                    "target_position": 7,
+                    "sound_hint": "sh2", // sh2
+                    "notes": [ 74, 75, 76, 77, 78, 79, 80, 81 ],
+                    "pixel": 26,
+                    "colors": [
+                        "#8a333c",
+                        "#8c424b",
+                        "#905e69",
+                        "#96828e",
+                        "#9fbfcd",
+                        "#a1ccda",
+                        "#a4dceb",
+                        "#7de3fa"
+                    ]
+                },
+                "3": {
+                    "target_position": 6,
+                    "sound_hint": "sh9", // sh9
+                    "notes": [ 65, 66, 67, 68, 69, 70, 71, 72 ],
+                    "pixel": 27,
+                    "colors": [
+                        "#2e1dcb",
+                        "#3f28ce",
+                        "#5335d2",
+                        "#7c50d9",
+                        "#955fde",
+                        "#a56ae1",
+                        "#b475e4",
+                        "#cc84e8"
+                    ]
+                },
+                "4": {
+                    "target_position": 5,
+                    "sound_hint": "sh6", // ssh6
+                    "notes": [ 50, 51, 52, 53, 54, 55, 56, 57 ],
+                    "pixel": 28,
+                    "colors": [
+                        "#00693a",
+                        "#13643c",
+                        "#355b40",
+                        "#405942",
+                        "#664f46",
+                        "#814849",
+                        "#92434a",
+                        "#bc384f"
+                    ]
+                }
+            }
+        }
+    }
+}

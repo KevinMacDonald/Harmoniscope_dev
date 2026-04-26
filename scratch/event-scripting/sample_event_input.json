@@ -1,0 +1,113 @@
+{
+    "pixel-groups": [
+        {
+            "name":     "core",
+            "pixels":   [ 
+                            1, 5, 9, 13, 17, 21, 25,
+                            2, 6, 10, 14, 18, 22, 26,
+                            3, 7, 11, 15, 19, 23, 27,
+                            4, 8, 12, 16, 20, 24, 28
+                        ]
+        }
+    ],
+    "events": [
+        {
+            "type":         "pixel-fade",
+            "desc":         "Dark to white",
+            "pixels":       [ 0 ],
+            "start-time":   0,
+            "end-time":     2,
+            "start-color":  { "red":   0, "green":   0, "blue":   0 },
+            "end-color":    { "red": 255, "green": 255, "blue": 255 },
+            "steps":        20
+        },
+        {
+            "type":         "pixel-chase",
+            "desc":         "Initial chase",
+            "pixels":       [ 
+                            1, 5, 9, 13, 17, 21, 25,
+                            2, 6, 10, 14, 18, 22, 26,
+                            3, 7, 11, 15, 19, 23, 27,
+                            4, 8, 12, 16, 20, 24, 28
+                            ],
+            "start-time":   2,
+            "end-time":     4,
+            "color":        { "red": 255, "green":   0, "blue":   0 }
+        },
+        {
+            "type":         "pixel-fade",
+            "desc":         "Fade to black",
+            "pixels":       [ 0 ],
+            "start-time":   4,
+            "end-time":     6,
+            "start-color":  { "red": 255, "green": 255, "blue": 255 },
+            "end-color":    { "red":   0, "green":   0, "blue":   0 },
+            "steps":        20
+        },
+        {
+            "type":         "pixel-chase",
+            "desc":         "Red chase",
+            "pixels":       [ 
+                            1, 5, 9, 13, 17, 21, 25,
+                            2, 6, 10, 14, 18, 22, 26,
+                            3, 7, 11, 15, 19, 23, 27,
+                            4, 8, 12, 16, 20, 24, 28
+                            ],
+            "start-time":   6,
+            "end-time":     8,
+            "color":        { "red": 255, "green":   0, "blue":   0 }
+        },
+        {
+            "type":         "pixel-chase",
+            "desc":         "Green chase",
+            "pixels":       [ 
+                            2, 6, 10, 14, 18, 22, 26,
+                            3, 7, 11, 15, 19, 23, 27,
+                            4, 8, 12, 16, 20, 24, 28,
+                            1, 5, 9, 13, 17, 21, 25
+                            ],
+            "start-time":   6,
+            "end-time":     8,
+            "color":        { "red": 0, "green":   255, "blue":   0 }
+        },
+        {
+            "type":         "pixel-chase",
+            "desc":         "Blue chase",
+            "pixels":       [ 
+                            3, 7, 11, 15, 19, 23, 27,
+                            4, 8, 12, 16, 20, 24, 28,
+                            1, 5, 9, 13, 17, 21, 25,
+                            2, 6, 10, 14, 18, 22, 26
+                            ],
+            "start-time":   6,
+            "end-time":     8,
+            "color":        { "red": 0, "green":   0, "blue":   255 }
+        },
+        {
+            "type":         "pixel-chase",
+            "desc":         "Yellow chase",
+            "pixels":       [ 
+                            4, 8, 12, 16, 20, 24, 28,
+                            1, 5, 9, 13, 17, 21, 25,
+                            2, 6, 10, 14, 18, 22, 26,
+                            3, 7, 11, 15, 19, 23, 27
+                            ],
+            "start-time":   6,
+            "end-time":     8,
+            "color":        { "red": 255, "green":   255, "blue":   0 }
+        },
+        {
+            "type":         "pixel-sparkle",
+            "desc":         "Sparkle test",
+            "pixels":       [ 
+                            4, 8, 12, 16, 20, 24, 28,
+                            1, 5, 9, 13, 17, 21, 25,
+                            2, 6, 10, 14, 18, 22, 26,
+                            3, 7, 11, 15, 19, 23, 27
+                            ],
+            "start-time":   8,
+            "end-time":     10,
+            "flash-rate":   0.20
+        }
+    ]
+}

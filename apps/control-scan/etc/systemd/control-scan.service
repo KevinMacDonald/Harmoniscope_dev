@@ -1,0 +1,14 @@
+[Unit]
+Description=Harmoniscope control scan daemon
+After=network.target auditd.service
+ConditionPathExists=!/etc/harmoniscope/control_scan_not_to_be_run
+
+[Service]
+ExecStart=/usr/local/bin/control_scan.py
+Type=forking
+PIDFile=/var/run/control-scan.pid
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

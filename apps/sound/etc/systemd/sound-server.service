@@ -1,0 +1,14 @@
+[Unit]
+Description=Harmoniscope sound control daemon
+After=network.target auditd.service
+ConditionPathExists=!/etc/harmoniscope/sound_server_not_to_be_run
+
+[Service]
+ExecStart=/usr/local/bin/sound_server.py
+Type=forking
+PIDFile=/var/run/sound-server.pid
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

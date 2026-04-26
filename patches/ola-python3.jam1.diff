@@ -1,0 +1,17 @@
+diff --git a/ClientWrapper.py b/ClientWrapper.py
+index 0193144..9f0f32f 100644
+--- a/ClientWrapper.py
++++ b/ClientWrapper.py
+@@ -48,6 +48,12 @@ class _Event(object):
+   def __cmp__(self, other):
+     return cmp(self._run_at, other._run_at)
+ 
++  def __lt__(self, other):
++    return self._run_at < other._run_at
++
++  def __eq__(self, other):
++    return self._run_at == other._run_at
++
+   def TimeLeft(self, now):
+     """Get the time remaining before this event triggers.
+ 

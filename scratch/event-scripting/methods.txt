@@ -1,0 +1,40 @@
+# Start playing a WAV file on the stations
+start_sound(time, station_id[], wav_file_name)
+
+# Start playing a MIDI note on the stations 
+start_sound(time, station_id[], midi_note)
+
+# Stop all sounds on the stations
+stop_sound(time, station_id[])
+
+# Play a WAV file for a set duration
+play_sound(start_time, stop_time, station_id[], wav_file_name)
+
+# Play a MIDI not for a set duration
+play_sound(start_time, stop_time, station_id[], midi_note)
+
+# Set the pixel values
+set_pixel(time, pixel_id[], r, g, b)
+
+# Turn the pixels off.
+pixel_off(time, pixel_id[])
+
+# Fade the pixels between the start color and the stop color, over the given
+# time period.
+pixel_color_fade(start_time, stop_time, pixel_id[], start_color, end_color)
+
+# Set all of the pixels black, and then move the given color along those
+# pixels, over the given time period, resetting each pixel to black along
+# the way.
+pixel_crawl(start_time, stop_time, pixel_id[], color)
+
+# Randomly flash the given pixels full white for a brief period.
+pixel_random_flash(start_time, stop_time, pixel_id[])
+
+# Do a Night Rider(TM) sweep across the given pixels with the given color.
+pixel_night_rider(start_time, stop_time, pixel_id[], color)
+
+# Helpers
+
+# Get the pixel id for the pixel associated with the given station.
+get_pixel_id(station_id, station_pixel_number)

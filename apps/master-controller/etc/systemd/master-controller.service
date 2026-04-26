@@ -1,0 +1,14 @@
+[Unit]
+Description=Harmoniscope master control daemon
+After=network.target auditd.service
+ConditionPathExists=!/etc/harmoniscope/master_controller_not_to_be_run
+
+[Service]
+ExecStart=/usr/local/bin/master_ctl.py
+Type=forking
+PIDFile=/var/run/master-controller.pid
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

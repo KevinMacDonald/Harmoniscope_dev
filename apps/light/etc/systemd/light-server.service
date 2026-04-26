@@ -1,0 +1,14 @@
+[Unit]
+Description=Harmoniscope light control daemon
+After=network.target auditd.service
+ConditionPathExists=!/etc/harmoniscope/light_server_not_to_be_run
+
+[Service]
+ExecStart=/usr/local/bin/light_server.py
+Type=forking
+PIDFile=/var/run/light-server.pid
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
