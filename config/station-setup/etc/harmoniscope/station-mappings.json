@@ -4,31 +4,31 @@
    // A hash mapping station IDs to IP addresses.
    "stations": {
         "0": {
-            "ip_address": "172.16.0.100"
+            "ip_address": "127.0.0.1"
         },
         "1": {
-            "ip_address": "172.16.0.101"
+            "ip_address": "127.0.0.1"
         },
         "2": {
-            "ip_address": "172.16.0.102"
+            "ip_address": "127.0.0.1"
         },
         "3": {
-            "ip_address": "172.16.0.103"
+            "ip_address": "127.0.0.1"
         },
         "4": {
-            "ip_address": "172.16.0.104"
+            "ip_address": "127.0.0.1"
         },
         "5": {
-            "ip_address": "172.16.0.105"
+            "ip_address": "127.0.0.1"
         },
         "6": {
-            "ip_address": "172.16.0.106"
+            "ip_address": "127.0.0.1"
         },
         "7": {
-            "ip_address": "172.16.0.107"
+            "ip_address": "127.0.0.1"
         },
         "8": {
-            "ip_address": "172.16.0.108"
+            "ip_address": "127.0.0.1"
         }
     },
 
@@ -37,23 +37,22 @@
         {
             "name":        "master-controller",
             "description": "The master controller process that takes in station state information and generates events",
-            "runs_on_stations": [ "0" ]
+            "runs_on_stations": [ "3" ]
         },
         {
             "name":        "light-server",
             "description": "The light control process that recieves light events from the master controller",
-            "runs_on_stations": [ "0" ]
+            "runs_on_stations": [ "3" ]
         },
         {
             "name":        "control-scan",
             "description": "The process that reads in knob input settings and sends them to the master controller",
-            "runs_on_stations": [ "1", "2", "3", "4", "5", "6", "7" ]
+            "runs_on_stations": [ "3" ]
         },
         {
             "name":        "sound-server",
             "description": "The audio control service that recieves sound events for a station from the master controller",
-            "runs_on_stations": [ "1", "2", "3", "4", "5", "6", "7", "8" ]
+            "runs_on_stations": [ "3" ]
         }
     ]
 }
-

@@ -171,30 +171,26 @@ def main(argv):
     # Load the configuration.
     config = load_configuration(options["station-config"])
 
+    # Per the README, we are modifying this for standalone operation.
+    # We'll hardcode the station ID to '3' and ensure other processes can see it.
+    if 'station-id' not in options:
+        options['station-id'] = '3'
+        print("Station ID hardcoded to: 3")
+    else:
+        print("Station ID overridden from command line to: ", options["station-id"])
 
-    # Old code that used the Waveshare
-
-    # # Read in the station ID from the DIP switches
-    # if 'station-id' not in options:
-    #     options["station-id"] = read_station_id()
-    #     print("Station ID: ", options["station-id"])
-    # else:
-    #     print("Station ID overridden to: ", options["station-id"])
-    #
-    # # Write out the station ID so that other processes can find it.
-    # makedirs(dirname(STATION_ID_FILE), 0o755, True)
-    # with open(STATION_ID_FILE, "w") as f:
-    #     f.write(options["station-id"])
+    # Write out the station ID so that other processes can find it.
+    makedirs(dirname(STATION_ID_FILE), 0o755, exist_ok=True)
+    with open(STATION_ID_FILE, "w") as f:
+        f.write(options["station-id"])
 
     if options["station-id"] not in config["stations"]:
         print("No configuration found for station ID ", options["station-id"])
         sys.exit(-1)
 
-    # Set the IP address
-    ip_address = set_ip_address(config, options)
-
-    # Set the hostname
-    set_hostname(ip_address)
+    # In standalone mode, we will not modify the network configuration.
+    # The daemons will be configured to use localhost.
+    print("Skipping network configuration for standalone mode.")
 
     # Enable the appropriate daemon processes
     configure_daemons(config, options)
