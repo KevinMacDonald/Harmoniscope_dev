@@ -148,7 +148,8 @@ def configure_daemons(config, options):
             call(["/bin/systemctl", "enable", daemon["name"]])
 
             if options["restart-daemons"]:
-                call(["/bin/systemctl", "start", daemon["name"]])
+                print("Restarting daemon:", daemon["name"])
+                call(["/bin/systemctl", "restart", daemon["name"]])
 
         else:
             print("Disabling daemon: ", daemon["name"])
