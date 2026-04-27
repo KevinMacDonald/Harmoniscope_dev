@@ -193,8 +193,8 @@ def initialize_multiplexer():
     # Instantiate bus objects for interfacing with the board's two buses
     i2c_helper = ABEHelpers()
     i2c_bus = i2c_helper.get_smbus()
-    bus1 = IoPi(i2c_bus, 0x20)  # knobs 1 and 2
-    bus2 = IoPi(i2c_bus, 0x21)  # knobs 3 and 4
+    bus1 = IOPi(i2c_bus, 0x20)  # knobs 1 and 2
+    bus2 = IOPi(i2c_bus, 0x21)  # knobs 3 and 4
 
 
     pin = 1
@@ -224,8 +224,8 @@ def read_input_knobs():
     # Instantiate bus objects for interfacing with the board's two buses
     i2c_helper = ABEHelpers()
     i2c_bus = i2c_helper.get_smbus()
-    bus1 = IoPi(i2c_bus, 0x20)
-    bus2 = IoPi(i2c_bus, 0x21)
+    bus1 = IOPi(i2c_bus, 0x20)
+    bus2 = IOPi(i2c_bus, 0x21)
 
     # Initialize our input array
     knobinputs = [0, 0, 0, 0]
