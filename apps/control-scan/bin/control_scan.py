@@ -21,6 +21,10 @@ import time
 from daemonize        import Daemonize
 from logging.handlers import RotatingFileHandler
 
+# Import ABElectronics libraries for I/O board
+from IOPi import IOPi
+from ABEHelpers import ABEHelpers
+
 # The default master controller server name.
 MASTER_HOST = "master"
 
@@ -213,7 +217,7 @@ def initialize_multiplexer():
 
         pin += 1
 
-    return true
+    return True
 
 # Read in the analog values of the input knobs and return them as an array.
 def read_input_knobs():

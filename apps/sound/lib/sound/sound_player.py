@@ -72,7 +72,8 @@ class SoundPlayer:
         if port_number:
                 self.midiout.open_port(port_number)
         else:
-            raise Exception("No matching MIDI port found, aborting.")
+            logging.warning("No FluidSynth MIDI port found. MIDI functions will be disabled.")
+            self.midiout = None
 
     # A destructor to cleanup when we're shut down. The main thing we want
     # to do is stop all notes, so that we don't leave anything stuck on.
@@ -80,14 +81,14 @@ class SoundPlayer:
         if not hasattr(self, 'initialized'):
             return
 
-        self.all_silent()
+        self.all_silent(stop_midi=False)
         del self.midiout
 
     # Play the sound with the given file name.
     def play_sound(self, sound_name, device):
         file_name = self.sound_dictionary.get_file_name(sound_name)
         wave_obj = sa.WaveObject.from_wave_file(file_name)
-        play_obj = wave_obj.play({'device': device})
+        play_obj = wave_obj.play()
  
     # Play the given MIDI note on the instrument with the chosen velocity.
     def note_on(self, note, instrument, velocity):
@@ -122,21 +123,24 @@ class SoundPlayer:
                 logging.info("Note {} not playing, ignoring off command".format(note))
  
     # Stop all sounds.
-    def all_silent(self):
+    def all_silent(self, stop_midi=True):
         # Stop all currently playing sounds.
         sa.stop_all()
 
-        with self.note_set_lock:
-            for instrument in self.note_set:
-                # 120 and 0 are control values specified in the MIDI spec. 
-                self.midiout.send_message([self.MIDI_ALL_SOUND_OFF + instrument,
-                                           120, 
-                                           0])
-            self.note_set.clear()
+        # Only attempt to send MIDI commands if the MIDI port was successfully initialized.
+        if self.midiout and stop_midi:
+            with self.note_set_lock:
+                for instrument in self.note_set:
+                    # 120 and 0 are control values specified in the MIDI spec.
+                    self.midiout.send_message([self.MIDI_ALL_SOUND_OFF + instrument,
+                                               120,
+                                               0])
+                self.note_set.clear()
 
     # Helper function to send a 'note on' message. We hardcode a velocity
     # of 100 (maximum is 127)
     def _send_note_on(self, note, instrument, velocity):
+        if not self.midiout: return
         logging.debug("Sending Note on %d, %d, %d" % (note, instrument, velocity))
         self.midiout.send_message([self.MIDI_NOTE_ON + instrument,
                                    note, 
@@ -146,6 +150,7 @@ class SoundPlayer:
     # Helper function to send a 'note off' message. We hardcode a velocity
     # of 127 (maximum is 127)
     def _send_note_off(self, note, instrument):
+        if not self.midiout: return
         logging.debug("Sending Note off %d, %d" % (note, instrument))
         self.midiout.send_message([self.MIDI_NOTE_OFF + instrument, 
                                    note, 
