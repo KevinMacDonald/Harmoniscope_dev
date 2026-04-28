@@ -208,3 +208,13 @@ The base OS and ALSA audio system are stable and correctly configured. We can re
 *   **Experiment 5.1: Fixing Missing IOPi Library**
     *   **Action:** Identified that the `control-scan` daemon was failing to start due to `ImportError: No module named 'IOPi'`. The original `install.sh` for the `control-scan` app attempted to install the ABElectronics library via `pip install -e`, which fails because the directory lacks a `setup.py` file. Updated `apps/control-scan/install.sh` to manually copy `ABE_IoPi.py` and `ABE_helpers.py` to `/usr/local/bin` alongside the daemon executable to ensure they are available to `control_scan.py`.
     *   **Observation:** This bypasses `pip` entirely, installing the bare python scripts locally for the daemon.
+
+*   **Experiment 5.2: Install Missing SMBus Dependency**
+    *   **Action:** The daemon failed to initialize the I2C bus because the `python3-smbus` package was missing. Added `python3-smbus` and `i2c-tools` to the main `install.sh`.
+    *   **Observation:** The package installs successfully, providing the necessary hardware interface.
+
+*   **Experiment 5.3: Fix Legacy Library TabErrors**
+    *   **Action:** `control-scan` crashed with `TabError: inconsistent use of tabs and spaces in indentation` inside `ABE_helpers.py`. The legacy ABElectronics library mixes tabs and spaces, which Python 3 rigidly rejects.
+    *   **Fix:** Updated `apps/control-scan/install.sh` to run a `sed` command that converts all tabs to 4 spaces in the copied library files.
+    *   **Observation:** Pending test. This should satisfy Python 3's strict indentation rules and finally allow the daemon to boot.
+    *   **Observation:** Success! The daemon booted correctly and is now scanning the physical hardware.

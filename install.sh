@@ -23,7 +23,7 @@ EOF
 # Update package lists and install essential system-level dependencies.
 # We need curl to fix pip.
 echo "Installing Debian packages..."
-apt-get update && apt-get install -y python3 curl
+apt-get update && apt-get install -y python3 curl python3-smbus i2c-tools
 
 # --- Python Pip Fix ---
 # The version of pip available for Jessie is broken. We will manually install

@@ -12,8 +12,15 @@ for pkg in $PYTHON_DEPS ; do
     fi
 done
 
-# Install ABElectronics I/O libraries
-pip3 install -e ../lib/ABElectronics_Python_Libraries/IOPi
+# The ABElectronics IOPi library doesn't have a setup.py, so it can't be
+# installed with pip. Instead, we manually copy the required library files
+# to the same directory as the daemon executable.
+/usr/bin/install -m 0644 ../../lib/ABElectronics_Python_Libraries/IOPi/ABE_IoPi.py /usr/local/bin/
+/usr/bin/install -m 0644 ../../lib/ABElectronics_Python_Libraries/IOPi/ABE_helpers.py /usr/local/bin/
+
+# The legacy ABElectronics Python library uses a mix of tabs and spaces for indentation, 
+# which causes a fatal TabError in Python 3. Convert all tabs to 4 spaces to fix this.
+sed -i 's/\t/    /g' /usr/local/bin/ABE_IoPi.py /usr/local/bin/ABE_helpers.py
 
 # Create the necessary directories.
 /usr/bin/install -m 0755 -d /usr/local/bin

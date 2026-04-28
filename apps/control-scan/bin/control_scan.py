@@ -22,11 +22,18 @@ from daemonize        import Daemonize
 from logging.handlers import RotatingFileHandler
 
 # Import ABElectronics libraries for I/O board
-from IOPi import IOPi
-from ABEHelpers import ABEHelpers
+try:
+    from ABE_IoPi import IoPi as IOPi
+except ImportError:
+    from ABE_IoPi import IOPi
+
+try:
+    from ABE_helpers import ABEHelpers
+except ImportError:
+    from ABEHelpers import ABEHelpers
 
 # The default master controller server name.
-MASTER_HOST = "master"
+MASTER_HOST = "127.0.0.1"
 
 # The base REST URL to submit control reports to.
 MASTER_REPORT_URL = "http://{host}:7000/station/{station_id}"
@@ -238,16 +245,16 @@ def read_input_knobs():
         if bus1.read_pin(pin) == 1:
             # Apply result appropriately based on the knob range: Knob 1 is 1-8, Knob 2 is 9-16.
             if pin <= 8:
-                knobinputs[1] = pin
+                knobinputs[0] = pin
             else:
-                knobinputs[2] = pin - 8
+                knobinputs[1] = pin - 8
 
         # Do the same for knobs 3 and 4 on the bus 2.
         if bus2.read_pin(pin) == 1:
             if pin <= 8:
-                knobinputs[3] = pin
+                knobinputs[2] = pin
             else:
-                knobinputs[4] = pin - 8
+                knobinputs[3] = pin - 8
         pin += 1
 
     return knobinputs

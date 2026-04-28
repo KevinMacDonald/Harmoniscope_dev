@@ -35,11 +35,15 @@ class SoundPlayer:
 
         try:
             self.initialize_wav_player()
-            self.initialize_midi_player()
-
         except:
-            logging.exception("Failure initializing audio")
+            logging.exception("Failure initializing WAV audio")
             raise
+
+        try:
+            self.initialize_midi_player()
+        except Exception as e:
+            logging.warning("Failure initializing MIDI audio, continuing without MIDI: %s", e)
+            self.midiout = None
 
         # Configure the set to track which notes are playing.
         self.note_set      = dict()
@@ -67,9 +71,8 @@ class SoundPlayer:
                 port_number = number
                 break
 
-        # If we found the FluidSynth port, use it. Otherwise, complain and
-        # throw an exception.
-        if port_number:
+        # If we found the FluidSynth port, use it.
+        if port_number is not None:
                 self.midiout.open_port(port_number)
         else:
             logging.warning("No FluidSynth MIDI port found. MIDI functions will be disabled.")
