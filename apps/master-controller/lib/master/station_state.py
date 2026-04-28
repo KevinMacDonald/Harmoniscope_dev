@@ -169,6 +169,14 @@ class StationState:
     #
     # Translate an analog input value to a knob position.
     def _analog_value_to_position(self, analog_value):
+        # Handle digital IO Pi board input (values 1-8 from control-scan)
+        # The IO Pi reads which pin is HIGH on the multiplexer, returning 1-8
+        if 1 <= analog_value <= KNOB_POSITION_COUNT:
+            # Convert pin number (1-8) to position index (0-7)
+            return int(analog_value) - 1
+
+        # Handle original analog ADC input (voltage 0-5V)
+        # This preserves backward compatibility with the original hardware
         position = int((analog_value / MAX_KNOB_VOLTAGE) * KNOB_POSITION_COUNT)
         position = max(position, 0)
         position = min(position, KNOB_POSITION_COUNT - 1)
