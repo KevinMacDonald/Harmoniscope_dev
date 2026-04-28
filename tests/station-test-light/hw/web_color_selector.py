@@ -12,10 +12,12 @@ class ColorSelector:
     # The maximum brightness value for a channel.
     MAX_BRIGHTNESS = 255
 
-    # Construct a ColorSelector instance. You need to pass in the line numbers
-    # for brightness, the color channel and a DMXControl instance to
-    # allow the instance to update the light.
-    def __init__(self, color_channel, dmx_control):
+    def __init__(self, color_channel: int, dmx_control):
+        """
+        Construct a ColorSelector instance. You need to pass in the line numbers
+        for brightness, the color channel and a DMXControl instance to
+        allow the instance to update the light.
+        """
         # Copy the parameters to the instance.            
         self.color_channel   = color_channel
         self.dmx_control     = dmx_control

@@ -90,7 +90,7 @@ Usage
 ====
 
 To use the Servo Pi library in your code you must first import the library:
-```
+```python
 from ABE_ServoPi import PWM
 ```
 Next you must initialise the ServoPi object:

@@ -3,6 +3,7 @@
 ## Purpose
 
 See details below taken from SSH on a pi. 
+```console
 pi@hscope-dev:~/harmoniscope $ cat /etc/os-release
 PRETTY_NAME="Raspbian GNU/Linux 8 (jessie)"
 NAME="Raspbian GNU/Linux"
@@ -13,6 +14,7 @@ ID_LIKE=debian
 HOME_URL="http://www.raspbian.org/"
 SUPPORT_URL="http://www.raspbian.org/RaspbianForums"
 BUG_REPORT_URL="http://www.raspbian.org/RaspbianBugs"
+```
 
 The purpose of this project is to take the existing code and make the modifications necessary to allow a single pi to operate standalone, with no other devices.  
 We are re-purposing all existing hardware and software. The original raspberry pi, analog IO board, sound card, amplifier, speaker etc. are all in use and
