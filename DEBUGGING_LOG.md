@@ -202,3 +202,9 @@ The base OS and ALSA audio system are stable and correctly configured. We can re
 2.  Ensure `fluidsynth` is disabled.
 3.  Run `sudo ./install.sh` to copy the new code and restart the `sound-server`.
 4.  Use a command-line tool (`curl`) to directly send a "play sound" request to the running `sound-server` and listen for audio.
+
+### Phase 5: Hardware I/O Integration
+
+*   **Experiment 5.1: Fixing Missing IOPi Library**
+    *   **Action:** Identified that the `control-scan` daemon was failing to start due to `ImportError: No module named 'IOPi'`. The original `install.sh` for the `control-scan` app attempted to install the ABElectronics library via `pip install -e`, which fails because the directory lacks a `setup.py` file. Updated `apps/control-scan/install.sh` to manually copy `ABE_IoPi.py` and `ABE_helpers.py` to `/usr/local/bin` alongside the daemon executable to ensure they are available to `control_scan.py`.
+    *   **Observation:** This bypasses `pip` entirely, installing the bare python scripts locally for the daemon.

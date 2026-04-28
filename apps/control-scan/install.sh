@@ -12,6 +12,9 @@ for pkg in $PYTHON_DEPS ; do
     fi
 done
 
+# Install ABElectronics I/O libraries
+pip3 install -e ../lib/ABElectronics_Python_Libraries/IOPi
+
 # Create the necessary directories.
 /usr/bin/install -m 0755 -d /usr/local/bin
 /usr/bin/install -m 0777 -d /var/log/harmoniscope/

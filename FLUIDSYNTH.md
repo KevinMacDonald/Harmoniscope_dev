@@ -9,4 +9,3 @@
 *   **(Confirmed)** Outputs audio to the default ALSA device (our `dmix` mixer).
 
 <!-- SYNC TEST: If this comment appears on the Pi, SSH FS is working -->
-This is a trivial new line to test file synchronization.
