@@ -216,5 +216,11 @@ The base OS and ALSA audio system are stable and correctly configured. We can re
 *   **Experiment 5.3: Fix Legacy Library TabErrors**
     *   **Action:** `control-scan` crashed with `TabError: inconsistent use of tabs and spaces in indentation` inside `ABE_helpers.py`. The legacy ABElectronics library mixes tabs and spaces, which Python 3 rigidly rejects.
     *   **Fix:** Updated `apps/control-scan/install.sh` to run a `sed` command that converts all tabs to 4 spaces in the copied library files.
-    *   **Observation:** Pending test. This should satisfy Python 3's strict indentation rules and finally allow the daemon to boot.
     *   **Observation:** Success! The daemon booted correctly and is now scanning the physical hardware.
+
+### Phase 6: Master Controller Logic Routing
+
+*   **Experiment 6.1: Switch Audio Commands from MIDI to WAV**
+    *   **Action:** Identified that knob turns successfully send `analog_values` to the `master-controller`, but the `master-controller` responds by sending `/midi_on` and `/midi_off` REST commands to the `sound-server`.
+    *   **Goal:** Modify the `master-controller` to instead send `/sound/<sound_name>` REST commands, utilizing the custom `.wav` files included in the project.
+    *   **Status:** Pending review of the `master-controller` source files to rewrite the event mapping logic.

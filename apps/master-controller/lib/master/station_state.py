@@ -93,21 +93,12 @@ class StationState:
                     knob['hint'].stop_hint()
                     knob['hint'] = None
                 
-            # Stop the current note playing.
-            note = self.get_note(id, knob['current_value'])
-            event = stop_note.Event(
-                                  when       = time.time(), 
-                                  station_id = self.id, 
-                                  note       = note)
-            new_events.append(event)
-
-            # Play the new position's note.
-            event = play_note.Event(
+            # Play the sound associated with the new position instead of a MIDI note.
+            # This assumes the 'notes' array in your config maps to the names of your .wav files.
+            event = play_sound.Event(
                              when       = time.time(), 
                              station_id = self.id, 
-                             note       = self.get_note(id, new_position),
-                             instrument = self.station_config['instrument'],
-                             velocity   = self.station_config['note_velocity'])
+                             sound      = str(self.get_note(id, new_position)))
             new_events.append(event)
                
             knob['current_value'] = new_position
@@ -182,4 +173,3 @@ class StationState:
         position = max(position, 0)
         position = min(position, KNOB_POSITION_COUNT - 1)
         return position
-

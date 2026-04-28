@@ -158,6 +158,18 @@ def configure_daemons(config, options):
             if options["restart-daemons"]:
                 call(["/bin/systemctl", "stop", daemon["name"]])
 
+# Fix for 'sudo: unable to resolve host' warning.
+def fix_localhost_resolution():
+    hostname = socket.gethostname()
+    hosts_file = "/etc/hosts"
+    try:
+        with open(hosts_file, "r") as f:
+            hosts_content = f.read()
+        if hostname not in hosts_content:
+            with open(hosts_file, "a") as f:
+                f.write("\n127.0.1.1\t{}\n".format(hostname))
+    except Exception as e:
+        print("Failed to update {}: {}".format(hosts_file, e))
 
 ##
 ## Begin main code
@@ -192,6 +204,7 @@ def main(argv):
     # In standalone mode, we will not modify the network configuration.
     # The daemons will be configured to use localhost.
     print("Skipping network configuration for standalone mode.")
+    fix_localhost_resolution()
 
     # Enable the appropriate daemon processes
     configure_daemons(config, options)
