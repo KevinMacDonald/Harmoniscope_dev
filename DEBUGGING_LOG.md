@@ -254,7 +254,8 @@ The base OS and ALSA audio system are stable and correctly configured. We can re
     *   **Conclusion:** The `apps/sound/install.sh` script was incorrectly copying `etc/asound.conf` (which didn't exist or was an old version relative to `apps/sound`) instead of the correct `asound.conf` from the project root. This prevented the robust `dmix` configuration from being applied.
     *   **Fix:** Modified `apps/sound/install.sh` to correctly copy `../../asound.conf` (from the project root) to `/etc/asound.conf` with appropriate `0644` permissions.
     *   **Next Action:** Run `sudo ./install.sh` and `sudo reboot`. Then re-test `python3 sound_test.py`.
-    *   **Status:** Pending re-test after deployment and reboot.
+    *   **Status:** Last action was to set Threaded = True for master and sound web services. The sound test works, but 
+    sound-server is not logging anything, and knob movements are not generating sounds.
 
 ---
 **End of Log**

@@ -57,8 +57,10 @@ class Event(event.Event):
                         params['b']))
 
         try:
-            # Send the change request to the light server.
-            response = requests.get(url, params = params)
+            # Send the change request to the light server. Use a short timeout
+            # so a slow/unreachable light service doesn't block the event
+            # processing queue for long periods.
+            response = requests.get(url, params = params, timeout = 1)
 
             # Update our internal pixel state.
             for pixel in self.pixels:

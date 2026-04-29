@@ -42,11 +42,11 @@ class WebService:
         logging.debug("Starting Flask")
         # Start the Flask instance.
         self.app.run(debug        = False, 
-                     host         = '0.0.0.0', 
-                     port         = 9000, 
-                     use_reloader = False, 
-                     threaded     = False,
-                     use_debugger = False)
+                 host         = '0.0.0.0', 
+                 port         = 9000, 
+                 use_reloader = False, 
+                 threaded     = False,
+                 use_debugger = False)
 
     ##
     # Helper functions to sanitize input values.
@@ -174,4 +174,3 @@ class WebService:
             logging.exception(output)
 
         return output
-

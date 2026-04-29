@@ -44,11 +44,11 @@ class WebService(Thread):
     #
     def run(self):
         self.app.run(debug        = False, 
-                     host         = '0.0.0.0', 
-                     port         = 7000, 
-                     use_reloader = False, 
-                     threaded     = False,
-                     use_debugger = False)
+                 host         = '0.0.0.0', 
+                 port         = 7000, 
+                 use_reloader = False, 
+                 threaded     = False,
+                 use_debugger = False)
 
     ##
     # This function will process the analog values from each station to 
@@ -109,5 +109,3 @@ class WebService(Thread):
         output = "Main event manually triggered!"
         logging.info(output)
         return output
-
-

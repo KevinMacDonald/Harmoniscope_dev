@@ -54,8 +54,8 @@ class EventWorker(Thread):
             # Release the lock condition.
             self.condition.release()
 
-            logging.debug("Dequeued %s event at %.2f (delta: %.2f)", 
-                          event.type(), time.time(), time.time() - event_time)
+            logging.info("Dequeued %s event scheduled at %.2f, running at %.2f (delta: %.2f)", 
+                          event.type(), event_time, time.time(), time.time() - event_time)
             logging.debug("Queue size now %d" % self.queue.qsize())
 
             # Now run the event.
@@ -75,7 +75,7 @@ class EventWorker(Thread):
         EventWorker.condition.acquire()
         EventWorker.queue.put([event.when + (random.random() / 100000), event])
 
-        logging.debug("Queued event to run at %.2f: %s", event.when, event.type())
+        logging.info("Queued event to run at %.2f: %s", event.when, event.type())
 
         EventWorker.condition.notify()
         EventWorker.condition.release()

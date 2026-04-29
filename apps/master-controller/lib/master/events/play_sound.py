@@ -1,5 +1,7 @@
 # events/play_sound.py - An event to play a sound on a station.
 
+import logging
+import time
 import requests
 
 from master.config import Config
@@ -46,8 +48,10 @@ class Event(event.Event):
             params["device"] = self.device
 
         try:
-            response = requests.get(url, params = params)
+            logging.info("Sending sound request to %s at %.2f", url, time.time())
+            response = requests.get(url, params = params, timeout = 1)
+            logging.info("Sound request returned status %s at %.2f", response.status_code, time.time())
 
         except requests.exceptions.RequestException as error:
-            print("Error sending sound event to station:", error) 
+            logging.exception("Error sending sound event to station: %s", error)
         

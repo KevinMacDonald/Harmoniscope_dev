@@ -155,6 +155,10 @@ def initialize_logging():
 def main():
     config = Config(options)
 
+    # If no explicit sound-server configured, assume local (standalone mode).
+    if not Config.get('sound-server'):
+        Config.set('sound-server', '127.0.0.1')
+
     initialize_logging()
 
     logging.debug("Visual hint: %s" % str(options["visual-hint"]))
