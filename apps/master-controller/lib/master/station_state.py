@@ -42,6 +42,8 @@ class StationState:
             if 'sounds' in knob_config:
                 knob_config['randomized_sounds'] = list(knob_config['sounds'])
             self.knobs[int(knob)]        = knob_config
+            
+        self.randomize_sounds()
 
 
     def randomize_sounds(self):
@@ -88,33 +90,7 @@ class StationState:
             #                 color     = new_color)
             # new_events.append(event)
 
-            # Generate the hints, if we've matched.
-            if new_position == knob['target_position']:
-                # if Config.get('visual-hint'):
-                #     # Start the hint flasher.
-                #     event = pixel_flash.Event(
-                #                     when      = time.time(),
-                #                     pixel_ids = [ self.get_pixel(id) ], 
-                #                     color     = Color("#ffffff"),
-                #                     period    = VISUAL_HINT_TIME,
-                #                     ratio     = 0.1)
-                #     knob['hint'] = event
-                #     new_events.append(event)
-
-                if Config.get('audio-hint'):
-                    # Play the hint sound.
-                    event = play_sound.Event(
-                                    when       = time.time(), 
-                                    station_id = self.id, 
-                                    sound      = self.get_sound_hint(id))
-                    new_events.append(event)
-
-            # No match, no hint, just update the pixel color.
-            else:
-                # If we've got the hint flasher running, stop it.
-                if knob['hint']:
-                    # knob['hint'].stop_hint()
-                    knob['hint'] = None
+            # (Legacy visual and audio hint logic has been removed for standalone operation)
                 
             # Play the sound associated with the new position instead of a MIDI note.
             # This assumes the 'notes' array in your config maps to the names of your .wav files.

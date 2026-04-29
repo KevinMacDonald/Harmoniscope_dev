@@ -12,7 +12,6 @@ from master.events        import play_sound
 from master.events        import update_pixel
 from master.events        import load_event_script
 from master.events        import reset_puzzle
-from master.events        import initialize_puzzle
 
 class StateTracker:
     ##
@@ -78,10 +77,6 @@ class StateTracker:
     # state.
     #
     def get_refresh_events():
-        # This function is called at startup. We will return a single event
-        # that handles the initial puzzle randomization and then queues the
-        # subsequent startup sounds.
-        return [initialize_puzzle.Event(when=time.time())]
         # Get the events to play the current sound for every knob on startup.
         return StateTracker.get_startup_sound_events()
 
