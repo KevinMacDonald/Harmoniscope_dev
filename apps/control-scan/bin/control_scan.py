@@ -224,16 +224,10 @@ def initialize_multiplexer():
 
         pin += 1
 
-    return True
+    return (bus1, bus2)
 
 # Read in the analog values of the input knobs and return them as an array.
-def read_input_knobs():
-    # Instantiate bus objects for interfacing with the board's two buses
-    i2c_helper = ABEHelpers()
-    i2c_bus = i2c_helper.get_smbus()
-    bus1 = IOPi(i2c_bus, 0x20)
-    bus2 = IOPi(i2c_bus, 0x21)
-
+def read_input_knobs(bus1, bus2):
     # Initialize our input array
     knobinputs = [0, 0, 0, 0]
 
@@ -267,7 +261,7 @@ def read_input_knobs():
 
 def main():
 
-    initialize_multiplexer()
+    bus1, bus2 = initialize_multiplexer()
     initialize_logging(options)
 
     # Generate the report URL.
@@ -284,7 +278,7 @@ def main():
     # Now we loop forever (and ever, and ever, and ever...).
     while True:
         # Read in the current values of all of the analog lines.    
-        current_inputs = read_input_knobs()
+        current_inputs = read_input_knobs(bus1, bus2)
 
         if current_inputs != previous_inputs:
             # Send the updated values to the master control service.
@@ -300,6 +294,12 @@ def main():
             if (time.time() - last_update_sent) > MAX_UPDATE_INTERVAL:
                 send_station_update(report_url, previous_inputs)
                 last_update_sent = time.time()
+        # else:
+        #     # If it's been longer than the maximum update interval, force
+        #     # send an update. This is a keep-alive for the master.
+        #     if (time.time() - last_update_sent) > MAX_UPDATE_INTERVAL:
+        #         send_station_update(report_url, previous_inputs)
+        #         last_update_sent = time.time()
 
         # Wait for a while.
         time.sleep(options["scan-interval"])

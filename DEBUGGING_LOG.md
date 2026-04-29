@@ -221,6 +221,21 @@ The base OS and ALSA audio system are stable and correctly configured. We can re
 ### Phase 6: Master Controller Logic Routing
 
 *   **Experiment 6.1: Switch Audio Commands from MIDI to WAV**
-    *   **Action:** Identified that knob turns successfully send `analog_values` to the `master-controller`, but the `master-controller` responds by sending `/midi_on` and `/midi_off` REST commands to the `sound-server`.
-    *   **Goal:** Modify the `master-controller` to instead send `/sound/<sound_name>` REST commands, utilizing the custom `.wav` files included in the project.
-    *   **Status:** Pending review of the `master-controller` source files to rewrite the event mapping logic.
+    *   **Action:** Reviewed the `master-controller` source code to change its event generation from MIDI notes to `.wav` file playback.
+    *   **Observation 1:** The primary event generation logic in `apps/master-controller/lib/master/station_state.py` had already been correctly modified to create a `play_sound` event when a knob's position changes.
+    *   **Observation 2:** A secondary function, `get_refresh_events` in `apps/master-controller/lib/master/state_tracker.py`, was still generating legacy `play_note` MIDI events. This was also likely causing the application to crash due to missing Python imports.
+    *   **Fix:** Modified `state_tracker.py` to generate `play_sound` events and added the necessary imports.
+    *   **Status:** **Completed.** The `master-controller` should now exclusively generate `.wav` sound events.
+
+### Next Proposed Experiment (6.2)
+
+**Hypothesis:** With the `master-controller` now generating the correct `play_sound` events, the system should be fully functional. Turning a physical knob should result in the playback of a corresponding `.wav` file.
+
+**Test:**
+1.  Run `sudo ./install.sh` to deploy the latest code changes and restart the daemons.
+2.  Turn the physical knobs on the station.
+3.  **Expected Result:** A different `.wav` file should play for each of the 8 positions of each knob.
+4.  Monitor the logs for all three daemons for any errors:
+    *   `tail -f /var/log/harmoniscope/control-scan.log`
+    *   `tail -f /var/log/harmoniscope/master-controller.log`
+    *   `tail -f /var/log/harmoniscope/sound-server.log`

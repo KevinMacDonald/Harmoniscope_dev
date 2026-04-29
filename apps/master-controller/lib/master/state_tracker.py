@@ -8,6 +8,8 @@ from master.config        import Config
 from master.station_state import *
 from master.system_state  import SystemState
 from master.event_queue   import EventWorker
+from master.events        import play_sound
+from master.events        import update_pixel
 from master.events        import load_event_script
 
 class StateTracker:
@@ -72,12 +74,10 @@ class StateTracker:
         for id in StateTracker.__stations:
             station = StateTracker.__stations[id]
             for knob in range(1, KNOB_COUNT + 1):
-                event = play_note.Event(
+                event = play_sound.Event(
                            when       = time.time(), 
                            station_id = station.id, 
-                           note       = station.get_note(knob),
-                           instrument = station.station_config['instrument'],
-                           velocity   = station.station_config['note_velocity'])
+                           sound      = str(station.get_note(knob)))
                 new_events.append(event)
 
                 event = update_pixel.Event(
