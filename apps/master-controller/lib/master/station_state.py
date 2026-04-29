@@ -58,25 +58,25 @@ class StationState:
             knob['last_update'] = time.time()
 
             # Change the pixel to match the new position. 
-            new_color = self.get_color(id, new_position)
-            event = update_pixel.Event(
-                            when      = time.time(), 
-                            pixel_ids = [ self.get_pixel(id) ], 
-                            color     = new_color)
-            new_events.append(event)
+            # new_color = self.get_color(id, new_position)
+            # event = update_pixel.Event(
+            #                 when      = time.time(), 
+            #                 pixel_ids = [ self.get_pixel(id) ], 
+            #                 color     = new_color)
+            # new_events.append(event)
 
             # Generate the hints, if we've matched.
             if new_position == knob['target_position']:
-                if Config.get('visual-hint'):
-                    # Start the hint flasher.
-                    event = pixel_flash.Event(
-                                    when      = time.time(),
-                                    pixel_ids = [ self.get_pixel(id) ], 
-                                    color     = Color("#ffffff"),
-                                    period    = VISUAL_HINT_TIME,
-                                    ratio     = 0.1)
-                    knob['hint'] = event
-                    new_events.append(event)
+                # if Config.get('visual-hint'):
+                #     # Start the hint flasher.
+                #     event = pixel_flash.Event(
+                #                     when      = time.time(),
+                #                     pixel_ids = [ self.get_pixel(id) ], 
+                #                     color     = Color("#ffffff"),
+                #                     period    = VISUAL_HINT_TIME,
+                #                     ratio     = 0.1)
+                #     knob['hint'] = event
+                #     new_events.append(event)
 
                 if Config.get('audio-hint'):
                     # Play the hint sound.
@@ -90,7 +90,7 @@ class StationState:
             else:
                 # If we've got the hint flasher running, stop it.
                 if knob['hint']:
-                    knob['hint'].stop_hint()
+                    # knob['hint'].stop_hint()
                     knob['hint'] = None
                 
             # Play the sound associated with the new position instead of a MIDI note.

@@ -80,15 +80,15 @@ class StateTracker:
                            sound      = str(station.get_sound(knob)))
                 new_events.append(event)
 
-                event = update_pixel.Event(
-                            when      = time.time(),
-                            pixel_ids = station.get_pixel(knob),
-                            color     = station.get_color(knob),
-                            paint     = False)
-                new_events.append(event)
-
-        # Only force a repaint on the last pixel update.
-        new_events[-1].paint = True
+        #         event = update_pixel.Event(
+        #                     when      = time.time(),
+        #                     pixel_ids = station.get_pixel(knob),
+        #                     color     = station.get_color(knob),
+        #                     paint     = False)
+        #         new_events.append(event)
+        # 
+        # # Only force a repaint on the last pixel update.
+        # # new_events[-1].paint = True
 
         return new_events
 

@@ -41,20 +41,26 @@ class EventWorker(Thread):
             while self.queue.empty():
                 self.condition.wait()
 
-            # Pull the work item off the queue.
+            # Pull the work item off the queue to inspect it.
             (event_time, event) = self.queue.get()
 
-            # If it's not time for the event, put it back and wait until
-            # it is.
-            if (event_time > time.time()):
-                self.queue.put([event_time, event])
-                self.condition.release()
-                continue
+            now = time.time()
+            # If it's not time for the event, put it back on the queue and
+            # wait for the correct time to come.
+            # if (event_time > now):
+            #     self.queue.put([event_time, event])
+            #     
+            #     # Wait until the event's time, or until another event is added.
+            #     self.condition.wait(timeout=event_time - now)
+            # 
+            #     # Loop back to re-evaluate the head of the queue.
+            #     self.condition.release()
+            #     continue
 
             # Release the lock condition.
             self.condition.release()
 
-            logging.info("Dequeued %s event scheduled at %.2f, running at %.2f (delta: %.2f)", 
+            logging.debug("Dequeued %s event scheduled at %.2f, running at %.2f (delta: %.2f)", 
                           event.type(), event_time, time.time(), time.time() - event_time)
             logging.debug("Queue size now %d" % self.queue.qsize())
 
@@ -75,7 +81,7 @@ class EventWorker(Thread):
         EventWorker.condition.acquire()
         EventWorker.queue.put([event.when + (random.random() / 100000), event])
 
-        logging.info("Queued event to run at %.2f: %s", event.when, event.type())
+        logging.debug("Queued event to run at %.2f: %s", event.when, event.type())
 
         EventWorker.condition.notify()
         EventWorker.condition.release()
@@ -108,4 +114,3 @@ class EventWorker(Thread):
 
         EventWorker.condition.notify()
         EventWorker.condition.release()
-

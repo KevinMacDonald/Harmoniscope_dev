@@ -188,7 +188,7 @@ def main(argv):
     # We'll hardcode the station ID to '3' and ensure other processes can see it.
     if 'station-id' not in options:
         options['station-id'] = '3'
-        print("Station ID hardcoded to: 1. Using sounds defined for station 1 in controller_config.json")
+        print("Station ID hardcoded to: 3. Using sounds defined for station 1 in controller_config.json")
     else:
         print("Station ID overridden from command line to: ", options["station-id"])
 
