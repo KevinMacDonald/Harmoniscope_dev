@@ -2,55 +2,55 @@
 
 ## Purpose
 
-See details below taken from SSH on a pi. 
-```console
-pi@hscope-dev:~/harmoniscope $ cat /etc/os-release
-PRETTY_NAME="Raspbian GNU/Linux 8 (jessie)"
-NAME="Raspbian GNU/Linux"
-VERSION_ID="8"
-VERSION="8 (jessie)"
-ID=raspbian
-ID_LIKE=debian
-HOME_URL="http://www.raspbian.org/"
-SUPPORT_URL="http://www.raspbian.org/RaspbianForums"
-BUG_REPORT_URL="http://www.raspbian.org/RaspbianBugs"
-```
+The Harmoniscope project was originally a distributed, multi-station interactive art installation featuring lights, MIDI sounds, and networked hardware running on Raspbian Jessie.
 
-The purpose of this project is to take the existing code and make the modifications necessary to allow a single pi to operate standalone, with no other devices.  
-We are re-purposing all existing hardware and software. The original raspberry pi, analog IO board, sound card, amplifier, speaker etc. are all in use and
-powered up with this pi. To start off we will hack the startup code to hardcode a station name for this pi. According to the original station-mappings.json the
-pi in use here is 'station3'. We should modify startup code such that this pi believes it is station3 independent of its current IP address since a new IP address
-was assigned to all SSH and SFTP to work. 
+The current iteration of this codebase represents a **Standalone Conversion**. The goal of this conversion was to repurpose the legacy code and hardware to run a single, self-contained prop unit without relying on external network requests, light servers, or external synthesizers.
+
+## The Puzzle
+Now that we have a station working standalone and knob changes are playing sounds, we want to create a puzzle that the user must solve. Here is a proposal:
+- The system reads in the 'sounds' collection for each knob, and creates an in-memory collection that is randomized and assigns those to the 8 knob positions.
+- Each in-memory collection contains one sound that starts with 'stationzap'. The objective is to turn each knob to the position where 'stationzap*' plays. Because the  in-memory randomized collection is being used, that position will change from one solving of the puzzle to the next.
+- When each knob is placed where 'stationzap*' plays then the system will play the 'arrival_processed.wav' file, followed by the 'maineventstations.wav'. 
+- Upon completion of the 'maineventstations.wav' file playing, the in-memory sound collections are randomized again and re-assigned to all knob positions. This concludes
+the puzzle, and the knobs are now reset for the next solution of the puzzle. 
 
 
-## Overview
+## Standalone Architecture
 
-Harmoniscope appears to be a multi-station system, likely running on Raspberry Pi devices, designed for an interactive experience involving lights, sound, and physical controls.
+The system has been heavily modified to operate offline on a single Raspberry Pi. It is hardcoded to identify internally as **Station 3**.
 
-The system is composed of several components as defined in `config/station-setup/etc/harmoniscope/station-mappings.json`:
-*   **Master Controller**: The central process that coordinates station states and generates events.
-*   **Light Server**: Controls lighting based on events from the master controller.
-*   **Sound Server**: Controls audio based on events from the master controller.
-*   **Control Scan**: Reads input from physical controls (like knobs) and sends them to the master controller.
+### Hardware Components
+* **Raspberry Pi**: Running legacy Raspbian Jessie.
+* **AB Electronics IO Pi Plus**: An I2C analog-to-digital converter board that reads the physical knob sweeps.
+* **USB Sound Card & Amplifier**: A standard USB audio interface (configured via `dmix` in `/etc/asound.conf`) feeding a physical amplifier and speaker.
 
-## Station Setup
+### Active Software Daemons
+Because this is a standalone sound-only prop, the software stack has been significantly trimmed. Only the following native daemons are active:
 
-Each station in the Harmoniscope network is configured at boot time. The `station_setup.py` script runs, which:
-1.  Requires a station ID to be passed to it.
-2.  Assigns a static IP address to the station based on its ID.
-3.  Sets the station's hostname.
-4.  Enables or disables specific daemons (services) based on the station's role.
+1. **`control-scan`**: Polls the IO Pi Plus board via the I2C bus for the physical positions of the four analog knobs. Transmits these values to the `master-controller`.
+2. **`master-controller`**: The brain of the system. Tracks the logical position of the knobs against a target victory configuration. When a knob moves, it translates the physical position into a `.wav` file request according to `/etc/harmoniscope/controller_config.json`.
+3. **`sound-server`**: A Flask-based web service utilizing the `simpleaudio` library. It receives HTTP requests from the `master-controller` and instantly plays the specified `.wav` files out of the USB sound card.
 
-## Installation
+### Disabled Services
+To prevent conflicts, network timeouts, and audio highjacking, several original services have been disabled or stubbed out:
+* **`light-server`**: Network calls to the light server inside `update_pixel.py` have been stubbed out. This allows the system to process lighting animations rapidly in memory without suffering HTTP timeouts.
+* **`fluidsynth` & `pulseaudio`**: Disabled and uninstalled, respectively. The system no longer synthesizes MIDI notes.
 
-To install the full Harmoniscope suite on a device, run the main installation script as root:
+## Configuration
+
+Sound assignments are managed in `/etc/harmoniscope/controller_config.json`. 
+
+Each knob on Station 3 possesses an array of `sounds` mapping physical integer positions (0-7) directly to file names in the `/usr/local/share/harmoniscope/sounds/` directory (excluding the `.wav` extension).
+
+## Installation & Service Management
+
+To deploy code changes and restart the daemon services, run the main installation script as root:
 
 ```bash
 sudo ./install.sh
 ```
 
-This script installs dependencies, copies over all the necessary application files, and then runs the station configuration script.
-
----
-
-(This is a stub file. Please expand on these sections with more detail about the project architecture, goals, and operation.)
+If you need to manually check logs to ensure the components are communicating:
+* `tail -f /var/log/harmoniscope/control-scan.log`
+* `tail -f /var/log/harmoniscope/master-controller.log`
+* `tail -f /var/log/harmoniscope/sound-server.log`

@@ -257,5 +257,22 @@ The base OS and ALSA audio system are stable and correctly configured. We can re
     *   **Status:** Last action was to set Threaded = True for master and sound web services. The sound test works, but 
     sound-server is not logging anything, and knob movements are not generating sounds.
 
----
+### Phase 8: Unblocking the Event Queue & Final Polish
+
+*   **Experiment 8.1: Debugging Event Worker Delays**
+    *   **Observation:** Events were taking 40+ seconds to play. Found that `update_pixel` events were constantly timing out because there was no light server on the standalone station. Every missing light request took 1 full second to fail, blocking the entire event queue.
+    *   **Fix:** Commented out the `requests.get` call in `events/update_pixel.py` to stub out the light server. The queue now processes visual events instantly in memory without network delays.
+    *   **Observation:** Sound events are now playing instantly when knobs are turned!
+    
+*   **Experiment 8.2: Cleaning Up Logs**
+    *   **Action:** The idle animation scripts were generating constant `update_pixel` events, spamming the `master-controller.log`. Changed the log level of queue operations from `INFO` to `DEBUG` in `event_queue.py`.
+    *   **Observation:** Logs are now perfectly clean, only showing important interactions.
+
+*   **Experiment 8.3: Fixing Audio Format Constraints**
+    *   **Observation:** The victory sequence seemed to stall. `sound-server.log` threw `Error playing sound arrival_processed: Bytes-per-sample must be 1 (8-bit) or 2 (16-bit)`.
+    *   **Fix:** The `simpleaudio` library cannot play 24-bit or 32-bit float WAV files. Transcoded the unsupported victory sound files to standard 16-bit PCM using `sox` (using the `-v 0.99` flag to prevent dither clipping).
+    *   **Observation:** The victory sequence plays perfectly and the puzzle resets successfully.
+
+## Final Status
+**SUCCESS.** The standalone Harmoniscope station is fully operational. Physical knob movements are instantly mapped to their assigned `.wav` files via `control-scan`, `master-controller`, and `sound-server` without the need for external network resources or `fluidsynth`.
 **End of Log**

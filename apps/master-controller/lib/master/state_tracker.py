@@ -11,6 +11,8 @@ from master.event_queue   import EventWorker
 from master.events        import play_sound
 from master.events        import update_pixel
 from master.events        import load_event_script
+from master.events        import reset_puzzle
+from master.events        import initialize_puzzle
 
 class StateTracker:
     ##
@@ -55,9 +57,16 @@ class StateTracker:
         # ignore the events from the update.
         if (StateTracker._is_main_event_triggered() == True):
             logging.info("Main event triggered!")
-            event = load_event_script.Event(when        = time.time(), 
-                                            script_file = MAIN_EVENT_SCRIPT)
-            EventWorker.replace_queue([event])
+            logging.info("Puzzle sequence complete! Queueing victory sounds.")
+            SystemState.set_state(SystemState.STATE_MAIN_EVENT)
+            
+            now = time.time()
+            station_id = next(iter(StateTracker.__stations.keys()))
+            event1 = play_sound.Event(when = now, station_id = station_id, sound = "arrival_processed")
+            event2 = play_sound.Event(when = now + 4.0, station_id = station_id, sound = "maineventstations")
+            event3 = reset_puzzle.Event(when = now + 38.0)
+            
+            EventWorker.replace_queue([event1, event2, event3])
             return
             
         # No main event, Queue the update events
@@ -69,8 +78,16 @@ class StateTracker:
     # state.
     #
     def get_refresh_events():
-        new_events = []
+        # This function is called at startup. We will return a single event
+        # that handles the initial puzzle randomization and then queues the
+        # subsequent startup sounds.
+        return [initialize_puzzle.Event(when=time.time())]
+        # Get the events to play the current sound for every knob on startup.
+        return StateTracker.get_startup_sound_events()
 
+    def get_startup_sound_events():
+        """Gets the events to play the current sound for every knob."""
+        new_events = []
         for id in StateTracker.__stations:
             station = StateTracker.__stations[id]
             for knob in range(1, KNOB_COUNT + 1):
@@ -79,18 +96,11 @@ class StateTracker:
                            station_id = station.id, 
                            sound      = str(station.get_sound(knob)))
                 new_events.append(event)
-
-        #         event = update_pixel.Event(
-        #                     when      = time.time(),
-        #                     pixel_ids = station.get_pixel(knob),
-        #                     color     = station.get_color(knob),
-        #                     paint     = False)
-        #         new_events.append(event)
-        # 
-        # # Only force a repaint on the last pixel update.
-        # # new_events[-1].paint = True
-
         return new_events
+
+    def reset_puzzle():
+        for id in StateTracker.__stations:
+            StateTracker.__stations[id].randomize_sounds()
 
     #
     # Load the station configuration.

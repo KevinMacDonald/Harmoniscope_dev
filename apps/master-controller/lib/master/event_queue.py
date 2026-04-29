@@ -47,15 +47,15 @@ class EventWorker(Thread):
             now = time.time()
             # If it's not time for the event, put it back on the queue and
             # wait for the correct time to come.
-            # if (event_time > now):
-            #     self.queue.put([event_time, event])
-            #     
-            #     # Wait until the event's time, or until another event is added.
-            #     self.condition.wait(timeout=event_time - now)
-            # 
-            #     # Loop back to re-evaluate the head of the queue.
-            #     self.condition.release()
-            #     continue
+            if (event_time > now):
+                self.queue.put([event_time, event])
+                
+                # Wait until the event's time, or until another event is added.
+                self.condition.wait(timeout=event_time - now)
+            
+                # Loop back to re-evaluate the head of the queue.
+                self.condition.release()
+                continue
 
             # Release the lock condition.
             self.condition.release()

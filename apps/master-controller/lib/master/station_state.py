@@ -2,6 +2,7 @@
 
 import logging
 import time
+import random
 
 from master.constants    import *
 from master.config       import Config
@@ -36,7 +37,29 @@ class StationState:
             knob_config['current_value'] = 0
             knob_config['last_update']   = 0
             knob_config['hint']          = None
+            # Initialize randomized_sounds with the original list. It will be
+            # shuffled later by an event after logging is configured.
+            if 'sounds' in knob_config:
+                knob_config['randomized_sounds'] = list(knob_config['sounds'])
             self.knobs[int(knob)]        = knob_config
+
+
+    def randomize_sounds(self):
+        """Randomize the sound mappings for each knob to create the puzzle."""
+        logging.info("Randomizing puzzle sounds for station %d...", self.id)
+        for id, knob in self.knobs.items():
+            if 'sounds' in knob:
+                shuffled_sounds = list(knob['sounds'])
+                random.shuffle(shuffled_sounds)
+                knob['randomized_sounds'] = shuffled_sounds
+                
+                # Find the new target position where the 'stationzap' sound is located
+                for i, sound in enumerate(shuffled_sounds):
+                    logging.info("Knob %d position %d assigned sound: %s", id, i, sound)
+                    if sound.startswith("stationzap"):
+                        knob['target_position'] = i
+                
+                logging.info("Knob %d target position is now %d ('%s')", id, knob['target_position'], shuffled_sounds[knob['target_position']])
 
     ##
     # Update the station's values.
@@ -148,7 +171,9 @@ class StationState:
             position = self.knobs[knob]['current_value']
 
         # The config should have a 'sounds' array with the names of the .wav files.
-        if 'sounds' not in self.knobs[knob]:
+        if 'randomized_sounds' in self.knobs[knob]:
+            return self.knobs[knob]['randomized_sounds'][position]
+        elif 'sounds' not in self.knobs[knob]:
             logging.warning("Knob %d config is missing 'sounds' array. Using 'notes' as fallback.", knob)
             return self.get_note(knob, position)
         return self.knobs[knob]['sounds'][position]
