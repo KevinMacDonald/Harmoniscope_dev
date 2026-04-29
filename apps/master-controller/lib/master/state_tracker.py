@@ -77,7 +77,7 @@ class StateTracker:
                 event = play_sound.Event(
                            when       = time.time(), 
                            station_id = station.id, 
-                           sound      = str(station.get_note(knob)))
+                           sound      = str(station.get_sound(knob)))
                 new_events.append(event)
 
                 event = update_pixel.Event(

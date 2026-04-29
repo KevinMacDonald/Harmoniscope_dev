@@ -51,10 +51,8 @@ rm -f /etc/rc?.d/???sound-server
 /usr/bin/install -m 0755 etc/systemd/sound-server.service /etc/systemd/system
 
 # Install the configuration for the software mixers.
-/usr/bin/install -m 0755 etc/asound.conf /etc
+/usr/bin/install -m 0644 ../../asound.conf /etc/asound.conf
 
 # Configure the sound-server process to run at startup.
 /bin/systemctl daemon-reload
 /bin/systemctl enable sound-server.service
-
-

@@ -98,7 +98,7 @@ class StationState:
             event = play_sound.Event(
                              when       = time.time(), 
                              station_id = self.id, 
-                             sound      = str(self.get_note(id, new_position)))
+                             sound      = str(self.get_sound(id, new_position)))
             new_events.append(event)
                
             knob['current_value'] = new_position
@@ -139,6 +139,19 @@ class StationState:
             position = self.knobs[knob]['current_value']
 
         return self.knobs[knob]['notes'][position]
+
+    ##
+    # Get the sound for the given knob position. If no position is specified,
+    # returns the sound for the current knob position.
+    def get_sound(self, knob, position = None):
+        if position is None:
+            position = self.knobs[knob]['current_value']
+
+        # The config should have a 'sounds' array with the names of the .wav files.
+        if 'sounds' not in self.knobs[knob]:
+            logging.warning("Knob %d config is missing 'sounds' array. Using 'notes' as fallback.", knob)
+            return self.get_note(knob, position)
+        return self.knobs[knob]['sounds'][position]
 
     ##
     # Returns true if this station's main event condition is satisfied.

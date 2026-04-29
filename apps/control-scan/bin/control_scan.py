@@ -288,12 +288,6 @@ def main():
                 previous_inputs = current_inputs
                 last_update_sent = time.time()
 
-        else:
-            # If it's been longer than the maximum update interval, force
-            # send an update.
-            if (time.time() - last_update_sent) > MAX_UPDATE_INTERVAL:
-                send_station_update(report_url, previous_inputs)
-                last_update_sent = time.time()
         # else:
         #     # If it's been longer than the maximum update interval, force
         #     # send an update. This is a keep-alive for the master.

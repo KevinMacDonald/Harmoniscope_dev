@@ -239,3 +239,22 @@ The base OS and ALSA audio system are stable and correctly configured. We can re
     *   `tail -f /var/log/harmoniscope/control-scan.log`
     *   `tail -f /var/log/harmoniscope/master-controller.log`
     *   `tail -f /var/log/harmoniscope/sound-server.log`
+ 
+### Phase 7: Configuration Data Correction
+
+*   **Experiment 7.1: Final Configuration Update**
+    *   **Observation:** After deploying the code changes from 6.1, the logs showed the expected behavior. The `master-controller.log` contained the new warning: `Knob X config is missing 'sounds' array. Using 'notes' as fallback.`. The `sound-server.log` continued to show `Error playing sound 62: Sound file not found`.
+    *   **Conclusion:** This confirms the application logic is now correct. The `master-controller` is attempting to find sound names, failing, and correctly falling back to using MIDI note numbers as sound names, which the `sound-server` then rejects. The problem is now isolated entirely to the configuration data.
+    *   **Final Action:** Manually edit `/etc/harmoniscope/controller_config.json`. For each knob definition under each station, add a new `"sounds"` array. This array must contain 8 string elements, where each string is the filename (without the `.wav` extension) of the sound to play for that knob position.
+    *   **Restart:** After saving the configuration file, restart the service with `sudo systemctl restart master-controller.service`.
+    *   **Status:** Sound server is logging that it is playing sounds with correct sound file names, but no sound is coming out.
+
+*   **Experiment 7.2: Correct `asound.conf` Deployment**
+    *   **Observation:** `aplay -l` shows the USB Audio Device as `card 1: Device`. However, the `/etc/asound.conf` file on the Pi was found to be an older version that lacked a `pcm.!default` entry and used `dmixer0` and `dmixer1` definitions, which did not match the desired `asound.conf` in the project's root directory. The `sound_test.py` script reported "Playback finished successfully" but produced no sound, indicating an issue with ALSA routing.
+    *   **Conclusion:** The `apps/sound/install.sh` script was incorrectly copying `etc/asound.conf` (which didn't exist or was an old version relative to `apps/sound`) instead of the correct `asound.conf` from the project root. This prevented the robust `dmix` configuration from being applied.
+    *   **Fix:** Modified `apps/sound/install.sh` to correctly copy `../../asound.conf` (from the project root) to `/etc/asound.conf` with appropriate `0644` permissions.
+    *   **Next Action:** Run `sudo ./install.sh` and `sudo reboot`. Then re-test `python3 sound_test.py`.
+    *   **Status:** Pending re-test after deployment and reboot.
+
+---
+**End of Log**
