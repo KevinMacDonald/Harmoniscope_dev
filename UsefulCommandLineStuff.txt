@@ -1,0 +1,13 @@
+curl http://127.0.0.1:9000/sound/arrival_processed
+
+sudo truncate -s 0 /var/log/harmoniscope/*.log
+
+sudo tail -f /var/log/harmoniscope/sound-server.log
+
+sudo tail -f /var/log/harmoniscope/master-controller.log
+
+sudo cat /var/log/harmoniscope/master-controller.log
+
+-- to see startup sound assignments
+sudo truncate -s 0 /var/log/harmoniscope/*.log && sudo systemctl restart master-controller && sudo cat /var/log/harmoniscope/master-controller.log
+

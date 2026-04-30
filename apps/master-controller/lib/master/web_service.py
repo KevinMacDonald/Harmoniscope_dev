@@ -87,7 +87,8 @@ class WebService(Thread):
         station_update = StationUpdate(int(station_id), analog_values)
         self.update_queue.queue_station_update(station_update)
         
-        output = "Input accepted for {} : {}".format(station_id, analog_values)
+        formatted_inputs = ", ".join(["%d:%d" % (i + 1, int(float(v))) for i, v in enumerate(analog_values)])
+        output = "Input accepted for station{} : [{}]".format(station_id, formatted_inputs)
         logging.info(output)
         return output
 

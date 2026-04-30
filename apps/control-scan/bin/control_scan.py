@@ -272,6 +272,8 @@ def main():
 
     # Initialize our cache of previous input values.
     previous_inputs = [0, 0, 0, 0]
+    stable_inputs = [0, 0, 0, 0]
+    last_change_time = 0
 
     last_update_sent = 0
 
@@ -281,11 +283,14 @@ def main():
         current_inputs = read_input_knobs(bus1, bus2)
 
         if current_inputs != previous_inputs:
-            # Send the updated values to the master control service.
+            previous_inputs = current_inputs
+            last_change_time = time.time()
+
+        # Only send the update if the inputs have been stable for at least 0.15 seconds
+        # and they are different from what we last successfully sent.
+        if current_inputs != stable_inputs and (time.time() - last_change_time) > 0.15:
             if send_station_update(report_url, current_inputs):
-                # If we successfully sent the message, stash the inputs so 
-                # we can only send updates when the values change.
-                previous_inputs = current_inputs
+                stable_inputs = current_inputs
                 last_update_sent = time.time()
 
         # else:

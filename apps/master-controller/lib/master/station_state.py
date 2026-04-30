@@ -57,11 +57,11 @@ class StationState:
                 
                 # Find the new target position where the 'stationzap' sound is located
                 for i, sound in enumerate(shuffled_sounds):
-                    logging.info("Knob %d position %d assigned sound: %s", id, i, sound)
+                    logging.info("Knob %d position %d assigned sound: %s", id, i + 1, sound)
                     if sound.startswith("stationzap"):
                         knob['target_position'] = i
                 
-                logging.info("Knob %d target position is now %d ('%s')", id, knob['target_position'], shuffled_sounds[knob['target_position']])
+                logging.info("Knob %d target position is now %d ('%s')", id, knob['target_position'] + 1, shuffled_sounds[knob['target_position']])
 
     ##
     # Update the station's values.
@@ -157,24 +157,16 @@ class StationState:
     ##
     # Returns true if this station's main event condition is satisfied.
     def is_main_event_met(self):
-        # If we haven't heard from this station in the timeout interval,
-        # then we assume it's dead and say that the condition's been met.
-        if (time.time() - self.last_update_time) > STATION_TIMEOUT:
-            return True
 
         # Iterate across all of the knobs, and if any of them don't match,
         # then we haven't met the condition.
         for id in self.knobs:
             knob = self.knobs[id]
 
-            # If we haven't been updated since the last main event, then we 
-            # havent met the criteria.
-            if knob['last_update'] < SystemState.get_state_entry_time():
-                return False
-
             # If the current value doesn't match the target position, then
             # we haven't met the criteria.
             if knob['current_value'] != knob['target_position']:
+                logging.debug("Station %d Knob %d failed: current %d != target %d", self.id, id, knob['current_value'] + 1, knob['target_position'] + 1)
                 return False
 
         # Everyone matches, this station is all set.

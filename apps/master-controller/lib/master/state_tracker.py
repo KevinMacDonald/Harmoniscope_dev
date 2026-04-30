@@ -83,14 +83,16 @@ class StateTracker:
     def get_startup_sound_events():
         """Gets the events to play the current sound for every knob."""
         new_events = []
+        delay = 3.0
         for id in StateTracker.__stations:
             station = StateTracker.__stations[id]
             for knob in range(1, KNOB_COUNT + 1):
                 event = play_sound.Event(
-                           when       = time.time(), 
+                           when       = time.time() + delay, 
                            station_id = station.id, 
                            sound      = str(station.get_sound(knob)))
                 new_events.append(event)
+                delay += 0.5
         return new_events
 
     def reset_puzzle():
