@@ -11,3 +11,4 @@ sudo cat /var/log/harmoniscope/master-controller.log
 -- to see startup sound assignments
 sudo truncate -s 0 /var/log/harmoniscope/*.log && sudo systemctl restart master-controller && sudo cat /var/log/harmoniscope/master-controller.log
 
+sudo ./install.sh

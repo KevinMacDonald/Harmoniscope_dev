@@ -227,29 +227,48 @@ def initialize_multiplexer():
     return (bus1, bus2)
 
 # Read in the analog values of the input knobs and return them as an array.
-def read_input_knobs(bus1, bus2):
-    # Initialize our input array
-    knobinputs = [0, 0, 0, 0]
+def read_input_knobs(bus1, bus2, previous_inputs):
+    # Initialize our input array with the previous known state
+    knobinputs = list(previous_inputs)
+    
+    active_pins = [[], [], [], []]
 
     # Iterate through all 16 slots on both buses
     pin = 1
     while pin <= 16:
 
         # Read the value of the pin on bus 1. If it's "on", add the results to our input array.
+        # Read the value of the pin on bus 1. If it's "on", append to our active pins.
         if bus1.read_pin(pin) == 1:
             # Apply result appropriately based on the knob range: Knob 1 is 1-8, Knob 2 is 9-16.
             if pin <= 8:
                 knobinputs[0] = pin
+                active_pins[0].append(pin)
             else:
                 knobinputs[1] = pin - 8
+                active_pins[1].append(pin - 8)
 
         # Do the same for knobs 3 and 4 on the bus 2.
         if bus2.read_pin(pin) == 1:
             if pin <= 8:
                 knobinputs[2] = pin
+                active_pins[2].append(pin)
             else:
                 knobinputs[3] = pin - 8
+                active_pins[3].append(pin - 8)
         pin += 1
+
+    # Evaluate the active pins to determine the true position and reject overlaps
+    for i in range(4):
+        if len(active_pins[i]) == 1:
+            # Clean single contact
+            knobinputs[i] = active_pins[i][0]
+        elif len(active_pins[i]) > 1:
+            # Make-before-break overlap. Retain the previous position if it's still
+            # making contact to avoid jumping to the new position too early.
+            if knobinputs[i] not in active_pins[i]:
+                # If the previous position is completely gone, just take the first contact
+                knobinputs[i] = active_pins[i][0]
 
     return knobinputs
 
@@ -280,7 +299,7 @@ def main():
     # Now we loop forever (and ever, and ever, and ever...).
     while True:
         # Read in the current values of all of the analog lines.    
-        current_inputs = read_input_knobs(bus1, bus2)
+        current_inputs = read_input_knobs(bus1, bus2, previous_inputs)
 
         if current_inputs != previous_inputs:
             previous_inputs = current_inputs

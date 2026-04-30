@@ -3,6 +3,7 @@
 import logging
 import time
 import random
+import copy
 
 from master.constants    import *
 from master.config       import Config
@@ -30,18 +31,17 @@ class StationState:
             station_config['note_velocity'] = DEFAULT_NOTE_VELOCITY
 
         self.knobs = {}
-        for knob in station_config['knobs']:
-            # Pull the knob config from the config and initialize the current 
-            # value to zero.
-            knob_config = station_config['knobs'][knob]
+        for knob_id_str in station_config['knobs']:
+            # Create a deep copy of the knob's configuration data to ensure this
+            # station's state is fully independent and prevent shared state issues.
+            knob_config = copy.deepcopy(station_config['knobs'][knob_id_str])
+
+            # Initialize the runtime state for this knob.
             knob_config['current_value'] = 0
             knob_config['last_update']   = 0
             knob_config['hint']          = None
-            # Initialize randomized_sounds with the original list. It will be
-            # shuffled later by an event after logging is configured.
-            if 'sounds' in knob_config:
-                knob_config['randomized_sounds'] = list(knob_config['sounds'])
-            self.knobs[int(knob)]        = knob_config
+
+            self.knobs[int(knob_id_str)] = knob_config
             
         self.randomize_sounds()
 
@@ -68,6 +68,11 @@ class StationState:
     def update(self, analog_inputs):
         new_events = []
         for id in self.knobs:
+            # Ignore 0 values. Since the hardware conversion to digital, 0 indicates
+            # a switch between detents (deadzone). We retain the last valid position.
+            if analog_inputs[id - 1] == 0:
+                continue
+
             knob = self.knobs[id]
 
             # The analog inputs array is zero-indexed, the knob numbers are
