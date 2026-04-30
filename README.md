@@ -6,7 +6,7 @@ The Harmoniscope project was originally a distributed, multi-station interactive
 
 The current iteration of this codebase represents a **Standalone Conversion**. The goal of this conversion was to repurpose the legacy code and hardware to run a single, self-contained prop unit without relying on external network requests, light servers, or external synthesizers.
 
-## The Puzzle
+## The Puzzle  - Kevin -> SUCCESS!! This has been fully implemented. 
 Now that we have a station working standalone and knob changes are playing sounds, we want to create a puzzle that the user must solve. Here is a proposal:
 - The system reads in the 'sounds' collection for each knob, and creates an in-memory collection that is randomized and assigns those to the 8 knob positions.
 - Each in-memory collection contains one sound that starts with 'stationzap'. The objective is to turn each knob to the position where 'stationzap*' plays. Because the  in-memory randomized collection is being used, that position will change from one solving of the puzzle to the next.
