@@ -53,5 +53,6 @@ class Event(event.Event):
             logging.info("Sound request returned status %s at %.2f", response.status_code, time.time())
 
         except requests.exceptions.RequestException as error:
-            logging.exception("Error sending sound event to station: %s", error)
+            # Log the error cleanly without dumping the full Python stack trace
+            logging.error("Error sending sound event to station: %s", error)
         

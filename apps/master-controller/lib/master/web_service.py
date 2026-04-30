@@ -47,7 +47,7 @@ class WebService(Thread):
                  host         = '0.0.0.0', 
                  port         = 7000, 
                  use_reloader = False, 
-                 threaded     = False,
+                 threaded     = True,
                  use_debugger = False)
 
     ##

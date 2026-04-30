@@ -237,24 +237,19 @@ def read_input_knobs(bus1, bus2, previous_inputs):
     pin = 1
     while pin <= 16:
 
-        # Read the value of the pin on bus 1. If it's "on", add the results to our input array.
         # Read the value of the pin on bus 1. If it's "on", append to our active pins.
         if bus1.read_pin(pin) == 1:
             # Apply result appropriately based on the knob range: Knob 1 is 1-8, Knob 2 is 9-16.
             if pin <= 8:
-                knobinputs[0] = pin
                 active_pins[0].append(pin)
             else:
-                knobinputs[1] = pin - 8
                 active_pins[1].append(pin - 8)
 
         # Do the same for knobs 3 and 4 on the bus 2.
         if bus2.read_pin(pin) == 1:
             if pin <= 8:
-                knobinputs[2] = pin
                 active_pins[2].append(pin)
             else:
-                knobinputs[3] = pin - 8
                 active_pins[3].append(pin - 8)
         pin += 1
 

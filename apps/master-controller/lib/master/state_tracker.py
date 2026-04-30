@@ -83,7 +83,9 @@ class StateTracker:
     def get_startup_sound_events():
         """Gets the events to play the current sound for every knob."""
         new_events = []
-        delay = 3.0
+        # Provide a generous delay to ensure the sound-server daemon has fully
+        # initialized its Flask server on port 9000 before we request sounds.
+        delay = 8.0
         for id in StateTracker.__stations:
             station = StateTracker.__stations[id]
             for knob in range(1, KNOB_COUNT + 1):
